@@ -8,6 +8,7 @@ public class Aviokompanija extends Entitet {
 		super();
 	}
 
+	
 	public Aviokompanija(int sifra, String naziv) {
 		super(sifra);
 		this.naziv = naziv;
