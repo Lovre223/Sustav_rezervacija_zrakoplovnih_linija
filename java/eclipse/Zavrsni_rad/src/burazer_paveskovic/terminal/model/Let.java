@@ -127,7 +127,7 @@ public class Let extends Entitet {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return (br_leta + " " + avion + " " + aviokompanija + " " + vrijeme_polaska + cijena);
+		return (br_leta + " " + avion + " " + aviokompanija + " " +  cijena);
 	}
 
 }

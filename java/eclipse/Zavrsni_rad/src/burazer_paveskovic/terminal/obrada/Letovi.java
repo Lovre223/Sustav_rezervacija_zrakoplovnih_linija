@@ -33,8 +33,70 @@ public class Letovi {
 			break;
 		case 2:
 			unos();
-
+			break;
+		case 3:
+			promjena();
+			break;
+		case 4:
+			brisanje();
+			break;
+		case 5:
+			start.glavniizbornik();
 		}
+
+	}
+
+	private void brisanje() {
+		pregled(false);
+		
+		int br = (Pomocno.unos("Odaberite let koji bi brisali: ", 1, letovi.size()));
+		
+		letovi.remove(br-1);
+		
+		izbornik();
+		
+	}
+
+	private void promjena() {
+		pregled(false);
+
+		int br = (Pomocno.unos("Odaberite koji bi let promijenili: ", 1, letovi.size()));
+
+		Let l = letovi.get(br - 1);
+		l.setSifra(Pomocno.unos("Unesite šifru leta: ", 1, Integer.MAX_VALUE));
+		l.setBr_leta(Pomocno.unos("Unesite broj leta: ", 1, Integer.MAX_VALUE));
+		l.setLuka_dolazak(Pomocno.unosTeksta("Unesite luku iz koje krečete: "));
+		l.setLuka_polazak(Pomocno.unosTeksta("Unesite luku u koju dolazite: "));
+		l.setCijena(Pomocno.unosdecimala("Upisi cijenu: "));
+		// l.setVijeme_dolaska(Pomocno.unosDolazakPolazak("Unesi vrijeme dolaska: "));
+		// l.setVrijeme_polaska(Pomocno.unosDolazakPolazak("Unesi vrijeme polaska: "));
+
+		start.getAvioni().pregled(false);
+
+		int br1 = Pomocno.unos("Odaberi avion koji ćeš dodati: ", 1, start.getAvioni().getAvioni().size());
+
+		l.setAvion(start.getAvioni().getAvioni().get(br1 - 1));
+
+		start.getAviokompanije().pregled(false);
+
+		br1 = Pomocno.unos("Odaberi aviokompaniju: ", 1, start.getAviokompanije().getAviokompanije().size());
+		l.setAviokompanija(start.getAviokompanije().getAviokompanije().get(br1 - 1));
+
+		while (true) {
+
+			start.getKorisnici().pregled(false);
+
+			br1 = Pomocno.unos("Odaberite korisnika za dodavanje: ", 1, start.getKorisnici().getKorisnici().size());
+			l.getKorisnici().add(start.getKorisnici().getKorisnici().get(br - 1));
+
+			if (Pomocno.unos("0 za kraj dodavanja polaznika:  ", 0, Integer.MAX_VALUE) == 0) {
+
+				break;
+
+			}
+		}
+
+		izbornik();
 
 	}
 

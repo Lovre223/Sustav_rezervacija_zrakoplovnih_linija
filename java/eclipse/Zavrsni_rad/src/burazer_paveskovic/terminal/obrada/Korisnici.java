@@ -28,7 +28,7 @@ public class Korisnici {
 	}
 
 	private void odabirizbornik() {
-		switch (Pomocno.unos("Odaberite opciju", 1, 5)) {
+		switch (Pomocno.unos("Odaberite opciju: ", 1, 5)) {
 
 		case 1:
 			pregled(true);
@@ -76,7 +76,7 @@ public class Korisnici {
 
 		Korisnik k = korisnici.get(br - 1);
 
-		k.setIme(Pomocno.unosTeksta("Unesite ime"));
+		k.setIme(Pomocno.unosTeksta("Unesite ime: "));
 		k.setSifra(Pomocno.unos("Unesi šifru korisnika: ", 1, Integer.MAX_VALUE));
 		k.setPrezime(Pomocno.unosTeksta("Unesite prezime: "));
 		k.setAdresa(Pomocno.unosTeksta("Unesite adresu: "));

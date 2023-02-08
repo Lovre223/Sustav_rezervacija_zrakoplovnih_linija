@@ -62,7 +62,7 @@ public class Pomocno {
 
 		while (true) {
 
-			System.out.println(poruka);
+			System.out.print(poruka);
 
 			s = ulaz.next();
 

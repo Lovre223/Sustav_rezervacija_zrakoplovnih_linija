@@ -78,6 +78,7 @@ public class Avioni {
 		Avion a = avioni.get(br - 1);
 
 		a.setNaziv(Pomocno.unosTeksta("Unesite naziv aviona: "));
+		a.setKapacitet(Pomocno.unos("Unesite kapacitet u avionu: ", 1, Integer.MAX_VALUE));
 
 		izbornik();
 
