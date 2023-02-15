@@ -6,6 +6,8 @@ import java.util.List;
 import burazer_paveskovic.terminal.Pomocno;
 import burazer_paveskovic.terminal.Start;
 import burazer_paveskovic.terminal.model.Korisnik;
+import burazer_paveskovic.terminal.model.Let;
+import burazer_paveskovic.terminal.model.Rezervacija;
 
 public class Korisnici {
 
@@ -92,7 +94,6 @@ public class Korisnici {
 		izbornik();
 	}
 
-	
 	private Korisnik unos() {
 		Korisnik k = new Korisnik();
 		k.setSifra(Pomocno.unos("Unesi šifru korisnika: ", 1, Integer.MAX_VALUE));
@@ -101,6 +102,10 @@ public class Korisnici {
 		k.setAdresa(Pomocno.unosTeksta("Unesite adresu: "));
 		k.setEmail(Pomocno.unosTeksta("Unesite email: "));
 		k.setOib(Pomocno.unosoiba("Unesite oib: "));
+
+		
+
+		
 
 		return k;
 	}

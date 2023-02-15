@@ -82,6 +82,13 @@ public class Start {
 		return korisnici;
 	}
 
+	public Letovi getLetovi() {
+		return letovi;
+	}
+	
+	
+	
+
 	
 	
 	

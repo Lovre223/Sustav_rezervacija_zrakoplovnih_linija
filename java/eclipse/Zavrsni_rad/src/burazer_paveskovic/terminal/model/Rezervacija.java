@@ -40,5 +40,6 @@ public class Rezervacija extends Entitet {
 	public void setKlasa(String klasa) {
 		this.klasa = klasa;
 	}
+	
 
 }

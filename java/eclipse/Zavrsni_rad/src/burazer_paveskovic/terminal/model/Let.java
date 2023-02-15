@@ -1,7 +1,6 @@
 package burazer_paveskovic.terminal.model;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,21 +13,23 @@ public class Let extends Entitet {
 	private BigDecimal cijena;
 	private String luka_polazak;
 	private String luka_dolazak;
-	private Duration trajanje_leta;
+	private int trajanjeleta;
 	private Avion avion;
 	private Aviokompanija aviokompanija;
 	private List<Korisnik> korisnici;
+	private List<Rezervacija> rezervacije;
 
 	
 
 	public Let() {
 		super();
-		korisnici = new ArrayList<>();		
+		korisnici = new ArrayList<>();
+		rezervacije = new ArrayList<>();
 	}
 
 	public Let(int sifra, int br_leta, Date vrijeme_polaska, Date vijeme_dolaska, BigDecimal cijena,
-			String luka_polazak, String luka_dolazak, Duration trajanje_leta, Avion avion,
-			Aviokompanija aviokompanija, List<Korisnik> korisnici) {
+			String luka_polazak, String luka_dolazak, int trajanjeleta, Avion avion,
+			Aviokompanija aviokompanija, List<Korisnik> korisnici, List<Rezervacija> rezervacije) {
 		super(sifra);
 		this.br_leta = br_leta;
 		this.vrijeme_polaska = vrijeme_polaska;
@@ -36,10 +37,11 @@ public class Let extends Entitet {
 		this.cijena = cijena;
 		this.luka_polazak = luka_polazak;
 		this.luka_dolazak = luka_dolazak;
-		this.trajanje_leta = trajanje_leta;
+		this.trajanjeleta = trajanjeleta;
 		this.avion = avion;
 		this.aviokompanija = aviokompanija;
 		this.korisnici = korisnici;
+		this.rezervacije = rezervacije;
 	}
 
 	public int getBr_leta() {
@@ -90,12 +92,12 @@ public class Let extends Entitet {
 		this.luka_dolazak = luka_dolazak;
 	}
 
-	public Duration getTrajanje_leta() {
-		return trajanje_leta;
+	public int gettrajanjeleta() {
+		return trajanjeleta;
 	}
 
-	public void setTrajanje_leta(Duration trajanje_leta) {
-		this.trajanje_leta = trajanje_leta;
+	public void settrajanjeleta(int trajanjeleta) {
+		this.trajanjeleta = trajanjeleta;
 	}
 
 	public Avion getAvion() {
@@ -122,6 +124,14 @@ public class Let extends Entitet {
 
 	public void setKorisnici(List<Korisnik> korisnici) {
 		this.korisnici = korisnici;
+	}
+	
+	public List<Rezervacija> getRezervacije() {
+		return rezervacije;
+	}
+
+	public void setRezervacije(List<Rezervacija> rezervacije) {
+		this.rezervacije = rezervacije;
 	}
 
 	@Override

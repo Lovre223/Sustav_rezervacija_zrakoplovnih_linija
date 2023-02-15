@@ -6,6 +6,7 @@ import java.util.List;
 import burazer_paveskovic.terminal.Pomocno;
 import burazer_paveskovic.terminal.Start;
 import burazer_paveskovic.terminal.model.Let;
+import burazer_paveskovic.terminal.model.Rezervacija;
 
 public class Letovi {
 
@@ -48,13 +49,13 @@ public class Letovi {
 
 	private void brisanje() {
 		pregled(false);
-		
+
 		int br = (Pomocno.unos("Odaberite let koji bi brisali: ", 1, letovi.size()));
-		
-		letovi.remove(br-1);
-		
+
+		letovi.remove(br - 1);
+
 		izbornik();
-		
+
 	}
 
 	private void promjena() {
@@ -63,13 +64,14 @@ public class Letovi {
 		int br = (Pomocno.unos("Odaberite koji bi let promijenili: ", 1, letovi.size()));
 
 		Let l = letovi.get(br - 1);
+		l.setVijeme_dolaska(Pomocno.unosDolazakPolazak("Unesi vrijeme dolaska: "));
+		l.setVrijeme_polaska(Pomocno.unosDolazakPolazak("Unesi vrijeme polaska: "));
 		l.setSifra(Pomocno.unos("Unesite šifru leta: ", 1, Integer.MAX_VALUE));
 		l.setBr_leta(Pomocno.unos("Unesite broj leta: ", 1, Integer.MAX_VALUE));
 		l.setLuka_dolazak(Pomocno.unosTeksta("Unesite luku iz koje krečete: "));
 		l.setLuka_polazak(Pomocno.unosTeksta("Unesite luku u koju dolazite: "));
 		l.setCijena(Pomocno.unosdecimala("Upisi cijenu: "));
-		// l.setVijeme_dolaska(Pomocno.unosDolazakPolazak("Unesi vrijeme dolaska: "));
-		// l.setVrijeme_polaska(Pomocno.unosDolazakPolazak("Unesi vrijeme polaska: "));
+		l.settrajanjeleta(Pomocno.unos("Unesi trajanje leta u minutama: ", 1, Integer.MAX_VALUE));
 
 		start.getAvioni().pregled(false);
 
@@ -89,26 +91,39 @@ public class Letovi {
 			br1 = Pomocno.unos("Odaberite korisnika za dodavanje: ", 1, start.getKorisnici().getKorisnici().size());
 			l.getKorisnici().add(start.getKorisnici().getKorisnici().get(br - 1));
 
-			if (Pomocno.unos("0 za kraj dodavanja polaznika:  ", 0, Integer.MAX_VALUE) == 0) {
+			if (Pomocno.unos("0 za kraj dodavanja korisnika:  ", 0, Integer.MAX_VALUE) == 0) {
 
 				break;
 
 			}
 		}
 
+		while (true) {
+			Rezervacija r = new Rezervacija();
+
+			r.setKlasa(Pomocno.unosTeksta("Unesi ime klase: "));
+			r.setSifra(Pomocno.unos("Unesi sifru rezervacije: ", 1, Integer.MAX_VALUE));
+			l.getRezervacije().add(r);
+
+			if (Pomocno.unos("Unesi 0 za kraj:", 0, Integer.MAX_VALUE) == 0) {
+
+				break;
+			}
+		}
 		izbornik();
 
 	}
 
 	private void unos() {
 		Let l = new Let();
+		l.setVijeme_dolaska(Pomocno.unosDolazakPolazak("Unesi vrijeme dolaska: "));
 		l.setSifra(Pomocno.unos("Unesite šifru leta: ", 1, Integer.MAX_VALUE));
 		l.setBr_leta(Pomocno.unos("Unesite broj leta: ", 1, Integer.MAX_VALUE));
 		l.setLuka_dolazak(Pomocno.unosTeksta("Unesite luku iz koje krečete: "));
 		l.setLuka_polazak(Pomocno.unosTeksta("Unesite luku u koju dolazite: "));
 		l.setCijena(Pomocno.unosdecimala("Upisi cijenu: "));
-		// l.setVijeme_dolaska(Pomocno.unosDolazakPolazak("Unesi vrijeme dolaska: "));
-		// l.setVrijeme_polaska(Pomocno.unosDolazakPolazak("Unesi vrijeme polaska: "));
+
+		l.setVrijeme_polaska(Pomocno.unosDolazakPolazak("Unesi vrijeme polaska: "));
 
 		start.getAvioni().pregled(false);
 
@@ -134,13 +149,26 @@ public class Letovi {
 
 			}
 		}
+		while (true) {
+			Rezervacija r = new Rezervacija();
+
+			r.setKlasa(Pomocno.unosTeksta("Unesi ime klase: "));
+			r.setSifra(Pomocno.unos("Unesi sifru rezervacije: ", 1, Integer.MAX_VALUE));
+			l.getRezervacije().add(r);
+
+			if (Pomocno.unos("Unesi 0 za kraj:", 0, Integer.MAX_VALUE) == 0) {
+
+				break;
+			}
+		}
+		
 
 		letovi.add(l);
 
 		izbornik();
 	}
 
-	private void pregled(boolean prikazizbornika) {
+	public void pregled(boolean prikazizbornika) {
 		System.out.println("Prikaz svih letova");
 		int br = 1;
 		for (Let l : letovi) {

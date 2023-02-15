@@ -1,5 +1,7 @@
 package burazer_paveskovic.terminal.model;
 
+import java.util.List;
+
 public class Korisnik extends Entitet {
 
 	private String ime;
@@ -7,6 +9,8 @@ public class Korisnik extends Entitet {
 	private String oib;
 	private String adresa;
 	private String email;
+	
+	
 
 	public Korisnik() {
 		super();
@@ -19,6 +23,7 @@ public class Korisnik extends Entitet {
 		this.oib = oib;
 		this.adresa = adresa;
 		this.email = email;
+		
 	}
 
 	public String getIme() {
@@ -34,7 +39,9 @@ public class Korisnik extends Entitet {
 	}
 
 	public void setPrezime(String prezime) {
+
 		this.prezime = prezime;
+
 	}
 
 	public String getOib() {
@@ -60,6 +67,10 @@ public class Korisnik extends Entitet {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+
+	
 
 	@Override
 	public String toString() {
