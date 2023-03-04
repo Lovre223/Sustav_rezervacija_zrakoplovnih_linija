@@ -3,19 +3,20 @@ package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 
 
 @Entity
 public class Rezervacija extends Entitet {
         
-       @ManyToOne
+        @ManyToOne
 	private Let let;
         
-       @ManyToOne
+        @ManyToOne
 	private Korisnik korisnik;
         
-        
+       
 	private String klasa;
 
 	public Rezervacija() {

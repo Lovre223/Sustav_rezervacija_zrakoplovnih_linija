@@ -3,6 +3,7 @@ package zavrsnirad.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class Let extends Entitet {
 	private Avion avion;
         @ManyToOne
 	private Aviokompanija aviokompanija;
-        @ManyToMany
+        @OneToMany
 	private List<Korisnik> korisnici;
-        @ManyToMany
+        @OneToMany
 	private List<Rezervacija> rezervacije;
 
 	

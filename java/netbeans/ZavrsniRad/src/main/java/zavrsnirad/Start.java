@@ -15,6 +15,6 @@ import zavrsnirad.util.PocetniInsert;
 public class Start {
 
     public static void main(String[] args) {
-     new PocetniInsert();
+        new PocetniInsert();
     }
 }
