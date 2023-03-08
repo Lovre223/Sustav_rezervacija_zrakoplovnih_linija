@@ -7,6 +7,7 @@ package zavrsnirad;
 import org.hibernate.Hibernate;
 import zavrsnirad.util.HibernateUtil;
 import zavrsnirad.util.PocetniInsert;
+import zavrsnirad.view.SplashScreen;
 
 /**
  *
@@ -15,6 +16,6 @@ import zavrsnirad.util.PocetniInsert;
 public class Start {
 
     public static void main(String[] args) {
-        new PocetniInsert();
+        new SplashScreen().setVisible(true);
     }
 }
