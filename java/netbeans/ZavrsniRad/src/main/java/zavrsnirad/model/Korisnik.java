@@ -6,19 +6,41 @@ package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
-
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@MappedSuperclass
 public class Korisnik extends Entitet {
-    
+
     private String ime;
     private String prezime;
     private String oib;
     private String adresa;
     private String email;
+    
+    
+   @OneToMany(mappedBy = "korisnik") 
+   private List<Rezervacija> rezervacije;
 
     
+    public Korisnik() {
+        super();
+       
+    }
+
+    public Korisnik(String ime, String prezime, String oib, String adresa, String email, int sifra) {
+        super(sifra);
+        this.ime = ime;
+        this.prezime = prezime;
+        this.oib = oib;
+        this.adresa = adresa;
+        this.email = email;
+       
+    }
+
     public String getIme() {
         return ime;
     }
@@ -58,7 +80,8 @@ public class Korisnik extends Entitet {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+
     
     
     

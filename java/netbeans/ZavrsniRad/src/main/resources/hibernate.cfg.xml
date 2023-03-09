@@ -22,5 +22,8 @@
     <mapping class = "zavrsnirad.model.Aviokompanija" />
     <mapping class = "zavrsnirad.model.Avion" />
    <mapping class = "zavrsnirad.model.Rezervacija" />
+   <mapping class = "zavrsnirad.model.Operater" />
+   
+   
   </session-factory>
 </hibernate-configuration>

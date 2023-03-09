@@ -13,13 +13,13 @@ import zavrsnirad.util.AppException;
  *
  * @author lovre
  */
-public class ObradaKorisnik extends Obrada<Korisnik> {
+public abstract class ObradaKorisnik extends Obrada<Korisnik>{
 
-    @Override
-    public List<Korisnik> read() {
-        return session.createQuery("from Korisnik k", Korisnik.class).list();
-
+     public List<Korisnik> read() {
+        return session.createQuery("from Grupa", 
+                Korisnik.class).list();
     }
+  
 
     @Override
     protected void kontrolaUnos() throws AppException {

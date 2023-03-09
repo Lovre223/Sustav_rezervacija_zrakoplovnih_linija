@@ -10,147 +10,135 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 @Entity
 public class Let extends Entitet {
 
-	private int br_leta;
-	private Date vrijeme_polaska;
-	private Date vijeme_dolaska;
-	private BigDecimal cijena;
-	private String luka_polazak;
-	private String luka_dolazak;
-	private int trajanjeleta;
-        
-        @ManyToOne
-	private Avion avion;
-        @ManyToOne
-	private Aviokompanija aviokompanija;
-        @OneToMany
-	private List<Korisnik> korisnici;
-        @OneToMany
-	private List<Rezervacija> rezervacije;
+    private int br_leta;
+    private Date vrijeme_polaska;
+    private Date vijeme_dolaska;
+    private BigDecimal cijena;
+    private String luka_polazak;
+    private String luka_dolazak;
+    private int trajanjeleta;
 
-	
+    @ManyToOne
+    private Avion avion;
+    @ManyToOne
+    private Aviokompanija aviokompanija;
 
-	public Let() {
-		super();
-		korisnici = new ArrayList<>();
-		rezervacije = new ArrayList<>();
-	}
+    @OneToMany(mappedBy = "let")
+    private List<Rezervacija> rezervacije;
+   
+    public Let() {
+        super();
 
-	public Let(int sifra, int br_leta, Date vrijeme_polaska, Date vijeme_dolaska, BigDecimal cijena,
-			String luka_polazak, String luka_dolazak, int trajanjeleta, Avion avion,
-			Aviokompanija aviokompanija, List<Korisnik> korisnici, List<Rezervacija> rezervacije) {
-		super(sifra);
-		this.br_leta = br_leta;
-		this.vrijeme_polaska = vrijeme_polaska;
-		this.vijeme_dolaska = vijeme_dolaska;
-		this.cijena = cijena;
-		this.luka_polazak = luka_polazak;
-		this.luka_dolazak = luka_dolazak;
-		this.trajanjeleta = trajanjeleta;
-		this.avion = avion;
-		this.aviokompanija = aviokompanija;
-		this.korisnici = korisnici;
-		this.rezervacije = rezervacije;
-	}
+    }
 
-	public int getBr_leta() {
-		return br_leta;
-	}
+    public Let(int sifra, int br_leta, Date vrijeme_polaska, Date vijeme_dolaska, BigDecimal cijena,
+            String luka_polazak, String luka_dolazak, int trajanjeleta, Avion avion,
+            Aviokompanija aviokompanija, List<Rezervacija> rezervacije) {
+        super(sifra);
+        this.br_leta = br_leta;
+        this.vrijeme_polaska = vrijeme_polaska;
+        this.vijeme_dolaska = vijeme_dolaska;
+        this.cijena = cijena;
+        this.luka_polazak = luka_polazak;
+        this.luka_dolazak = luka_dolazak;
+        this.trajanjeleta = trajanjeleta;
+        this.avion = avion;
+        this.aviokompanija = aviokompanija;
+        this.rezervacije = rezervacije;
 
-	public void setBr_leta(int br_leta) {
-		this.br_leta = br_leta;
-	}
+    }
 
-	public Date getVrijeme_polaska() {
-		return vrijeme_polaska;
-	}
+    public int getBr_leta() {
+        return br_leta;
+    }
 
-	public void setVrijeme_polaska(Date vrijeme_polaska) {
-		this.vrijeme_polaska = vrijeme_polaska;
-	}
+    public void setBr_leta(int br_leta) {
+        this.br_leta = br_leta;
+    }
 
-	public Date getVijeme_dolaska() {
-		return vijeme_dolaska;
-	}
+    public Date getVrijeme_polaska() {
+        return vrijeme_polaska;
+    }
 
-	public void setVijeme_dolaska(Date vijeme_dolaska) {
-		this.vijeme_dolaska = vijeme_dolaska;
-	}
+    public void setVrijeme_polaska(Date vrijeme_polaska) {
+        this.vrijeme_polaska = vrijeme_polaska;
+    }
 
-	public BigDecimal getCijena() {
-		return cijena;
-	}
+    public Date getVijeme_dolaska() {
+        return vijeme_dolaska;
+    }
 
-	public void setCijena(BigDecimal cijena) {
-		this.cijena = cijena;
-	}
+    public void setVijeme_dolaska(Date vijeme_dolaska) {
+        this.vijeme_dolaska = vijeme_dolaska;
+    }
 
-	public String getLuka_polazak() {
-		return luka_polazak;
-	}
+    public BigDecimal getCijena() {
+        return cijena;
+    }
 
-	public void setLuka_polazak(String luka_polazak) {
-		this.luka_polazak = luka_polazak;
-	}
+    public void setCijena(BigDecimal cijena) {
+        this.cijena = cijena;
+    }
 
-	public String getLuka_dolazak() {
-		return luka_dolazak;
-	}
+    public String getLuka_polazak() {
+        return luka_polazak;
+    }
 
-	public void setLuka_dolazak(String luka_dolazak) {
-		this.luka_dolazak = luka_dolazak;
-	}
+    public void setLuka_polazak(String luka_polazak) {
+        this.luka_polazak = luka_polazak;
+    }
 
-	public int gettrajanjeleta() {
-		return trajanjeleta;
-	}
+    public String getLuka_dolazak() {
+        return luka_dolazak;
+    }
 
-	public void settrajanjeleta(int trajanjeleta) {
-		this.trajanjeleta = trajanjeleta;
-	}
+    public void setLuka_dolazak(String luka_dolazak) {
+        this.luka_dolazak = luka_dolazak;
+    }
 
-	public Avion getAvion() {
-		return avion;
-	}
+    public int gettrajanjeleta() {
+        return trajanjeleta;
+    }
 
-	public void setAvion(Avion avion) {
-		this.avion = avion;
-	}
+    public void settrajanjeleta(int trajanjeleta) {
+        this.trajanjeleta = trajanjeleta;
+    }
 
-	public Aviokompanija getAviokompanija() {
-		return aviokompanija;
-	}
+    public Avion getAvion() {
+        return avion;
+    }
 
-	public void setAviokompanija(Aviokompanija aviokompanija) {
-		this.aviokompanija = aviokompanija;
-	}
-	
-	
-	
-	public List<Korisnik> getKorisnici() {
-		return korisnici;
-	}
+    public void setAvion(Avion avion) {
+        this.avion = avion;
+    }
 
-	public void setKorisnici(List<Korisnik> korisnici) {
-		this.korisnici = korisnici;
-	}
-	
-	public List<Rezervacija> getRezervacije() {
-		return rezervacije;
-	}
+    public Aviokompanija getAviokompanija() {
+        return aviokompanija;
+    }
 
-	public void setRezervacije(List<Rezervacija> rezervacije) {
-		this.rezervacije = rezervacije;
-	}
+    public void setAviokompanija(Aviokompanija aviokompanija) {
+        this.aviokompanija = aviokompanija;
+    }
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return (br_leta + " " + avion + " " + aviokompanija + " " +  cijena);
-	}
+
+    public List<Rezervacija> getRezervacije() {
+        return rezervacije;
+    }
+
+    public void setRezervacije(List<Rezervacija> rezervacije) {
+        this.rezervacije = rezervacije;
+    }
+    
+    
+    
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return (br_leta + " " + avion + " " + aviokompanija + " " + cijena);
+    }
 
 }
