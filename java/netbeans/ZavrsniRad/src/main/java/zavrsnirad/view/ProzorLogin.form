@@ -36,17 +36,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPoruka" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEmail" alignment="0" pref="198" max="32767" attributes="0"/>
+                              <Component id="txtEmail" alignment="0" pref="210" max="32767" attributes="0"/>
                               <Component id="pswLozinka" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="lblPoruka" min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="138" max="32767" attributes="0"/>
+              <EmptySpace pref="86" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,8 +65,8 @@
               <Component id="pswLozinka" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnPrijava" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="lblPoruka" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblPoruka" min="-2" pref="8" max="-2" attributes="0"/>
               <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>

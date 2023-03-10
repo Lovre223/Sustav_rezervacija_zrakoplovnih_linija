@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@MappedSuperclass
 public class Korisnik extends Entitet {
 
     private String ime;

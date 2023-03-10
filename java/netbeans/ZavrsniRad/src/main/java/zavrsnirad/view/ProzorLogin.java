@@ -81,13 +81,13 @@ public class ProzorLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel1)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                                .addComponent(pswLozinka)))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(pswLozinka))
+                            .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +104,8 @@ public class ProzorLogin extends javax.swing.JFrame {
                 .addComponent(pswLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPrijava)
-                .addGap(26, 26, 26)
-                .addComponent(lblPoruka)
+                .addGap(18, 18, 18)
+                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -145,6 +145,7 @@ public class ProzorLogin extends javax.swing.JFrame {
              if(pswLozinka.getPassword().length == 0){
                     
                 lblPoruka.setText("Obavezno lozinka");
+                return;
              
              }
              

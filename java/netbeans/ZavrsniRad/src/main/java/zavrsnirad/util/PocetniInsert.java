@@ -34,6 +34,7 @@ public class PocetniInsert {
     private List<Aviokompanija> aviokompanije;
     private List<Korisnik> korisnici; 
     private List<Rezervacija> rezervacije;
+    private List<Let> letovi;
 
     private Session session;
     
@@ -44,6 +45,7 @@ public class PocetniInsert {
             korisnici = new ArrayList<>();
           
             rezervacije = new ArrayList<>();
+            letovi = new ArrayList<>();
             
             session = HibernateUtil.getSession();
             session.beginTransaction();
@@ -51,8 +53,9 @@ public class PocetniInsert {
             kreirajAvione();
             kreirajAviokompanije();
             kreirajKorisnike();
-            kreirajRezervacije();
             kreirajLetove();
+            kreirajRezervacije();
+           
            
         session.getTransaction().commit();
     
@@ -102,7 +105,7 @@ public class PocetniInsert {
                 k.setPrezime(faker.name().lastName());
                 k.setEmail(faker.internet().emailAddress());
                 k.setAdresa(faker.address().streetAddress());
-                //k.setOib(dovucioib());
+                //k.setOib(Alati.dovuciOib());
             
                 session.persist(k);
                 korisnici.add(k);
@@ -112,31 +115,15 @@ public class PocetniInsert {
 
     }
     
-           private void kreirajRezervacije() {
-            Rezervacija r;
-            for( int i = 0; i<BROJ_REZERVACIJA;i++){
-                r = new Rezervacija();
-                
-                r.setKorisnik(korisnici.get(sb(0, BROJ_KORISNIKA-1)));
-                r.setKlasa(faker.animal().name());
-     
-               session.persist(r);
-               rezervacije.add(r);
-            
-              }
-           }
-
+         
     private void kreirajLetove() {
         
             Let l;
-            
-            List<Korisnik> k;
-            List<Rezervacija> r;
+           
             for(int i = 0; i<BROJ_LETOVA;i++){
                 l = new Let();
-    
-                k = new ArrayList<>();
-                r = new ArrayList<>();
+              
+               
                 l.setBr_leta(faker.number().randomDigit());
                 l.setCijena(new BigDecimal(faker.number().numberBetween(800, 1200)));
                 l.setLuka_dolazak(faker.aviation().airport());
@@ -147,27 +134,43 @@ public class PocetniInsert {
                 l.setAvion(avioni.get(sb(0, BROJ_AVIONA-1 )));
                 l.setAviokompanija(aviokompanije.get(sb(0,BROJ_AVIOKOMPANIJA-1)));
                 
-               
                 
-                for(int j = 0; j<sb(20,300 );j++){
-                  k.add(korisnici.get(sb(0,BROJ_KORISNIKA-1)));
+    
                 
-                }
-                
-                l.setKorisnici(k);
-                
-                for(int z = 0; z<sb(20,300);z++ ){
-                  r.add(rezervacije.get(sb(0,BROJ_REZERVACIJA-1)));
-                
-                }
-                
-                l.setRezervacije(r);
                 
                 session.persist(l);
+                
+                letovi.add(l);
+                
+                
             }
+          
+           
+            
         
 
     }
+    
+    
+      private void kreirajRezervacije() {
+            Rezervacija r;
+            for( int i = 0; i<BROJ_REZERVACIJA;i++){
+                r = new Rezervacija();
+                
+                r.setKorisnik(korisnici.get(sb(0, BROJ_KORISNIKA-1)));
+                r.setKlasa(faker.animal().name());
+                r.setLet(letovi.get(sb(0, BROJ_LETOVA-1)));
+                
+               
+                    
+             
+             
+               session.persist(r);
+               rezervacije.add(r);
+            
+              }
+           }
+
     
             
 
@@ -178,6 +181,10 @@ public class PocetniInsert {
     
      private int sb(int min, int max){
         return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
+    private String dovucioib() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
    

@@ -38,7 +38,7 @@ public class Avion extends Entitet {
 	@Override
 	public String toString() {
 		
-		return naziv +  " " + kapacitet;
+		return naziv;
 	}
 
 }

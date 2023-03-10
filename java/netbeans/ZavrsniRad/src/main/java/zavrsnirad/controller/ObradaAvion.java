@@ -16,7 +16,7 @@ public class ObradaAvion extends Obrada<Avion> {
 
     @Override
     public List<Avion> read() {
-        return session.createQuery("from Avion ", Avion.class).list();
+        return session.createQuery("from Avion order by naziv ", Avion.class).list();
 
     }
 
@@ -62,7 +62,7 @@ public class ObradaAvion extends Obrada<Avion> {
         } catch (Exception e) {
 
         }
-        if (avioni != null || !avioni.isEmpty()) {
+        if (avioni != null && !avioni.isEmpty()) {
 
             throw new AppException("Smjer s istim nazivom postoji u bazi");
 
