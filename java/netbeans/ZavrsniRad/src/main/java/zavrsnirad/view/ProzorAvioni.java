@@ -8,6 +8,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import zavrsnirad.controller.ObradaAvion;
 import zavrsnirad.model.Avion;
+import zavrsnirad.model.Let;
 import zavrsnirad.util.AppException;
 
 /**
@@ -44,6 +45,10 @@ public class ProzorAvioni extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtKapacitet = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
+        btnBrisanje = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstLet = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,15 +76,24 @@ public class ProzorAvioni extends javax.swing.JFrame {
             }
         });
 
+        btnBrisanje.setText("Brisanje");
+        btnBrisanje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrisanjeActionPerformed(evt);
+            }
+        });
+
+        lstLet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(lstLet);
+
+        jLabel4.setText("Letovi");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -89,14 +103,27 @@ public class ProzorAvioni extends javax.swing.JFrame {
                             .addComponent(txtNaziv)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtKapacitet, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(btnDodaj))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDodaj)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBrisanje)
+                                .addGap(20, 20, 20))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,8 +136,11 @@ public class ProzorAvioni extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtKapacitet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(btnDodaj)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodaj)
+                            .addComponent(btnBrisanje)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,6 +177,35 @@ public class ProzorAvioni extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDodajActionPerformed
 
+    private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
+            if(lstPodaci.getSelectedValue() == null){
+                JOptionPane.showMessageDialog(getRootPane(), "Odaberite jedan od aviona");
+                return;
+                
+            
+            }
+            
+            if(JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati " + obrada.getEntitet().getNaziv() + "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)== JOptionPane.NO_OPTION ){
+    
+             return;
+    
+    }
+        try {
+            
+            obrada.delete();
+            ucitaj();
+            
+        } catch (AppException ex) {
+        
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    
+        
+            
+            
+            
+    }//GEN-LAST:event_btnBrisanjeActionPerformed
+
     private void ucitaj() {
         DefaultListModel<Avion> m = new DefaultListModel<>();
         m.addAll(obrada.read());
@@ -160,11 +219,15 @@ public class ProzorAvioni extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<Let> lstLet;
     private javax.swing.JList<Avion> lstPodaci;
     private javax.swing.JTextField txtKapacitet;
     private javax.swing.JTextField txtNaziv;
@@ -181,6 +244,21 @@ public class ProzorAvioni extends javax.swing.JFrame {
                 txtKapacitet.setText("");
         
         }
+            
+            DefaultListModel<Let> m = new DefaultListModel<>();
+            
+            if(a.getLetovi()!=null && !a.getLetovi().isEmpty()){
+            
+                for(Let l: a.getLetovi() ){
+                    
+                    m.addElement(l);
+                
+                }
+            
+            }
+            
+            lstLet.setModel(m);
+            lstLet.repaint();
             
 
     }

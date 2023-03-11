@@ -25,6 +25,8 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         p = new JProgressBar();
+        setTitle("Učitavanje aplikacije...");
+        
         ucitaj();
     }
 

@@ -17,7 +17,7 @@ public class ObradaAviokompanija extends Obrada<Aviokompanija>{
     @Override
     public List<Aviokompanija> read() {
         
-        return session.createQuery("from aviokompanija", Aviokompanija.class).list();
+        return session.createQuery("from Aviokompanija", Aviokompanija.class).list();
             
     }
 
