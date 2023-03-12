@@ -3,28 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package zavrsnirad.view;
-    
+
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import zavrsnirad.controller.ObradaAviokompanija;
 import zavrsnirad.model.Aviokompanija;
-
-
+import zavrsnirad.util.AppException;
 
 /**
  *
  * @author lovre
  */
 public class ProzorAviokompanije extends javax.swing.JFrame {
-        private ObradaAviokompanija obrada;
-    
-    
+
+    private ObradaAviokompanija obrada;
+
     /**
      * Creates new form ProzorAviokompanije
      */
     public ProzorAviokompanije() {
         initComponents();
         obrada = new ObradaAviokompanija();
-        
+
         ucitaj();
     }
 
@@ -42,6 +42,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         lstAviokompanije = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         txtNaziv = new javax.swing.JTextField();
+        btnDodaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstAviokompanije);
 
         jLabel2.setText("Naziv");
+
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +80,8 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDodaj))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,7 +94,10 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnDodaj)))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -93,17 +105,29 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAviokompanijeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAviokompanijeValueChanged
-          
-            obrada.setEntitet(lstAviokompanije.getSelectedValue());
-        
-        
-            napuniView();
-      
-      
-      
-        
-      
+       
+
+        obrada.setEntitet(lstAviokompanije.getSelectedValue());
+
+        napuniView();
+
+
     }//GEN-LAST:event_lstAviokompanijeValueChanged
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Aviokompanija());
+
+        dodajNovi();
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (AppException ex) {
+
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+
+
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     private void ucitaj() {
         DefaultListModel<Aviokompanija> m = new DefaultListModel<>();
@@ -115,11 +139,9 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -128,9 +150,16 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void napuniView() {
-            var a =obrada.getEntitet();
-            
-            txtNaziv.setText(a.getNaziv());
+        var a = obrada.getEntitet();
+
+        txtNaziv.setText(a.getNaziv());
+
+    }
+
+    private void dodajNovi() {
+        var a = obrada.getEntitet();
+
+           a.setNaziv(txtNaziv.getText());
 
     }
 }
