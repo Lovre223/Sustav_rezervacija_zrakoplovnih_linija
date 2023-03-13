@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import zavrsnirad.model.Operater;
+import zavrsnirad.util.Alati;
 import zavrsnirad.util.AppException;
 
 /**
@@ -71,6 +72,12 @@ public class ObradaOperater extends Obrada<Operater>{
 
     @Override
     protected void kontrolaUnos() throws AppException {
+              kontrolaIme();
+        kontrolaPrezime();
+        kontrolaEmail();
+        kontrolaOib();
+        
+        
     }
 
     @Override
@@ -81,7 +88,56 @@ public class ObradaOperater extends Obrada<Operater>{
     protected void kontrolaBrisanje() throws AppException {
     }
 
-  
+    private void kontrolaIme() throws AppException{
+             kontrolaImeNull();
+
+    }
+
+    private void kontrolaImeNull() throws AppException {
+       if (entitet.getIme() == null) {
+
+            throw new AppException("Ime mora biti postavljeno");
+        }
+
+    }
+
+    private void kontrolaPrezime() throws AppException {
+        kontrolaPrezimeNull();
+        
+
+    }
+    
+    private void kontrolaPrezimeNull() throws AppException {
+        if (entitet.getPrezime() == null) {
+
+            throw new AppException("Ime mora biti postavljeno");
+        }
+        
+   
+    }
+    
+
+    private void kontrolaEmail() throws AppException {
+        kontrolaEmailNull();
+    }
+    
+    private void kontrolaEmailNull() throws AppException {
+        if (entitet.getEmail() == null) {
+
+            throw new AppException("Email mora biti unesen");
+        }
+
+    }
+
+      private void kontrolaOib() throws AppException {
+        if (!Alati.kontrolaOIB(entitet.getOib())) {
+
+            throw new AppException("Oib nije valjan");
+        }
+
+    }
+
+    
     
     
   
