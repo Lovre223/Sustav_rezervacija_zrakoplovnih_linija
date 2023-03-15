@@ -27,11 +27,11 @@
               <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
               <Component id="pbar" min="-2" pref="259" max="-2" attributes="0"/>
           </Group>
+          <Component id="jLabel3" min="-2" pref="778" max="-2" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="202" max="-2" attributes="0"/>
           </Group>
-          <Component id="jLabel3" min="-2" pref="778" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -59,6 +59,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="ff" red="0" type="rgb"/>
         </Property>
+        <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="stringPainted" type="boolean" value="true"/>
       </Properties>
     </Component>

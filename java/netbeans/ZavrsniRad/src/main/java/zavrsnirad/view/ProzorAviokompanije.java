@@ -49,6 +49,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         lstLet = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         btnBrisanje = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -61,7 +62,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Aviokompanije");
 
@@ -94,6 +95,13 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
             }
         });
 
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,14 +114,19 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDodaj)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBrisanje)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDodaj)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBrisanje))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnPromjeni)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -141,16 +154,28 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
                                 .addGap(91, 91, 91)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDodaj)
-                                    .addComponent(btnBrisanje)))
+                                    .addComponent(btnBrisanje))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPromjeni))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAviokompanijeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAviokompanijeValueChanged
-       
+        if(lstAviokompanije.getValueIsAdjusting()){
+        
+                return;
+        
+        }
+        
+        if(lstAviokompanije.getSelectedValue()== null){
+        
+                return;
+        }
 
         obrada.setEntitet(lstAviokompanije.getSelectedValue());
 
@@ -202,6 +227,30 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnBrisanjeActionPerformed
 
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+         if(lstAviokompanije.getSelectedValue() == null){
+                    JOptionPane.showMessageDialog(getRootPane(), "Aviokompanija za promjenu mora biti odabrana!!!");
+                  return;  
+                    
+        }
+         
+           try {
+            
+            obrada.update();
+            ucitaj();
+            
+        } catch (AppException ex) {
+        
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+        
+         
+         
+         
+        
+        
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
     private void ucitaj() {
         DefaultListModel<Aviokompanija> m = new DefaultListModel<>();
         m.addAll(obrada.read());
@@ -216,6 +265,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

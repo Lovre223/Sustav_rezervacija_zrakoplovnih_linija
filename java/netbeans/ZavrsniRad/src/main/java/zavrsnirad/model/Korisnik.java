@@ -80,7 +80,13 @@ public class Korisnik extends Entitet {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+            return ime + " " + prezime;
 
+    }
+
+  
     
     
     

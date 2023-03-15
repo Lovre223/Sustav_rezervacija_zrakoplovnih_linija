@@ -16,15 +16,16 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ProzorAvioni extends javax.swing.JFrame {
-        private ObradaAvion obrada;
-    
+
+    private ObradaAvion obrada;
+
     /**
      * Creates new form ProzorAvioni
      */
     public ProzorAvioni() {
         initComponents();
         obrada = new ObradaAvion();
-        
+
         ucitaj();
     }
 
@@ -49,6 +50,7 @@ public class ProzorAvioni extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstLet = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
+        btnPromjeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,6 +66,12 @@ public class ProzorAvioni extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstPodaci);
 
         jLabel2.setText("Naziv");
+
+        txtNaziv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNazivActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Kapacitet");
 
@@ -88,6 +96,13 @@ public class ProzorAvioni extends javax.swing.JFrame {
 
         jLabel4.setText("Letovi");
 
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,25 +112,31 @@ public class ProzorAvioni extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNaziv)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtKapacitet, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDodaj)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBrisanje)
-                                .addGap(20, 20, 20))))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtNaziv)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtKapacitet, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnDodaj)
+                                        .addGap(20, 20, 20))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(btnPromjeni))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(104, 104, 104)
+                                .addComponent(btnBrisanje))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +146,7 @@ public class ProzorAvioni extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -138,7 +159,9 @@ public class ProzorAvioni extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDodaj)
-                            .addComponent(btnBrisanje)))
+                            .addComponent(btnPromjeni))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBrisanje))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -147,64 +170,85 @@ public class ProzorAvioni extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
-         if(evt.getValueIsAdjusting()){
+        if (evt.getValueIsAdjusting()) {
             return;
         }
-        if(lstPodaci.getSelectedValue()==null){
+        if (lstPodaci.getSelectedValue() == null) {
             return;
         }
-        
+
         obrada.setEntitet(lstPodaci.getSelectedValue());
-        
+
         napuniView();
-        
-        
+
+
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-            obrada.setEntitet(new Avion());
-            
-            dodajNovi();
-        
-            try {
+        obrada.setEntitet(new Avion());
+
+        dodajNovi();
+
+        try {
             obrada.create();
             ucitaj();
         } catch (AppException ex) {
-                JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
-            
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+
         }
-        
+
 
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
-            if(lstPodaci.getSelectedValue() == null){
-                JOptionPane.showMessageDialog(getRootPane(), "Odaberite jedan od aviona");
-                return;
-                
-            
-            }
-            
-            if(JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati " + obrada.getEntitet().getNaziv() + "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)== JOptionPane.NO_OPTION ){
-    
-             return;
-    
-    }
+        if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Odaberite jedan od aviona");
+            return;
+
+        }
+
+        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati " + obrada.getEntitet().getNaziv() + "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+
+            return;
+
+        }
         try {
-            
+
             obrada.delete();
             ucitaj();
-            
+
         } catch (AppException ex) {
-        
+
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
-    
-        
-            
-            
-            
+
+
     }//GEN-LAST:event_btnBrisanjeActionPerformed
+
+    private void txtNazivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNazivActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNazivActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+
+        if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Odaberite jedan od aviona za promjenu");
+            return;
+
+        }
+
+        dodajNovi();
+
+        try {
+            obrada.update();
+            ucitaj();
+        } catch (AppException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+
+        }
+
+
+    }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void ucitaj() {
         DefaultListModel<Avion> m = new DefaultListModel<>();
@@ -216,11 +260,11 @@ public class ProzorAvioni extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -234,46 +278,50 @@ public class ProzorAvioni extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void napuniView() {
-           var a = obrada.getEntitet();
-                   
-            txtNaziv.setText(a.getNaziv());
-            
-            try {
-                txtKapacitet.setText(String.valueOf(a.getKapacitet()));
-        } catch (Exception e) {
-                txtKapacitet.setText("");
-        
-        }
-            
-            DefaultListModel<Let> m = new DefaultListModel<>();
-            
-            if(a.getLetovi()!=null && !a.getLetovi().isEmpty()){
-            
-                for(Let l: a.getLetovi() ){
-                    
-                    m.addElement(l);
-                
-                }
-            
-            }
-            
-            lstLet.setModel(m);
-            lstLet.repaint();
-            
+        var a = obrada.getEntitet();
 
+        txtNaziv.setText(a.getNaziv());
+
+        try {
+            txtKapacitet.setText(String.valueOf(a.getKapacitet()));
+        } catch (Exception e) {
+            txtKapacitet.setText("");
+
+        }
+
+        DefaultListModel<Let> m = new DefaultListModel<>();
+
+        if (a.getLetovi() != null && !a.getLetovi().isEmpty()) {
+
+            for (Let l : a.getLetovi()) {
+
+                m.addElement(l);
+
+            }
+
+        }
+
+        lstLet.setModel(m);
+        lstLet.repaint();
+
+        btnBrisanje.setVisible(false);
+        if (a.getLetovi() == null || a.getLetovi().isEmpty()) {
+            btnBrisanje.setVisible(true);
+
+        }
     }
 
     private void dodajNovi() {
 
-            var a = obrada.getEntitet();
-            
-            a.setNaziv(txtNaziv.getText());
-            
-            try {
-                a.setKapacitet(Integer.parseInt(txtKapacitet.getText()));
+        var a = obrada.getEntitet();
+
+        a.setNaziv(txtNaziv.getText());
+
+        try {
+            a.setKapacitet(Integer.parseInt(txtKapacitet.getText()));
         } catch (Exception e) {
-                
-                a.setKapacitet(0);
+
+            a.setKapacitet(0);
         }
 
     }

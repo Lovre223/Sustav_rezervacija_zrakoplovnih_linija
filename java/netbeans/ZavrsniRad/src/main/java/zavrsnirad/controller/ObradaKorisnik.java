@@ -13,11 +13,24 @@ import zavrsnirad.util.AppException;
  *
  * @author lovre
  */
-public abstract class ObradaKorisnik extends Obrada<Korisnik>{
+public  class ObradaKorisnik extends Obrada<Korisnik>{
 
      public List<Korisnik> read() {
-        return session.createQuery("from Grupa", 
+        return session.createQuery("from Korisnik", 
                 Korisnik.class).list();
+    }
+     
+     public List<Korisnik> read(String uvjet) {
+        uvjet=uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+       return session.createQuery("from Korisnik "
+               + " where concat(ime,' ',prezime,' ',ime) "
+               + " like :uvjet "
+               + " order by prezime, ime ", 
+               Korisnik.class)
+               .setParameter("uvjet", uvjet)
+               .setMaxResults(100)
+               .list();
     }
   
 

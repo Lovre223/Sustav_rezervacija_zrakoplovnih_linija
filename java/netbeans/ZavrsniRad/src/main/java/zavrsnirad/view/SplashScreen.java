@@ -25,7 +25,7 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         p = new JProgressBar();
-        setTitle("Učitavanje aplikacije...");
+        setTitle("Učitavanje aplikacije...✈️");
         
         ucitaj();
     }
@@ -48,6 +48,7 @@ public class SplashScreen extends javax.swing.JFrame {
         pbar.setBackground(new java.awt.Color(255, 255, 255));
         pbar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         pbar.setForeground(new java.awt.Color(0, 255, 51));
+        pbar.setRequestFocusEnabled(false);
         pbar.setStringPainted(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -63,10 +64,10 @@ public class SplashScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(pbar, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(275, 275, 275)
-                .addComponent(jLabel1))
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
