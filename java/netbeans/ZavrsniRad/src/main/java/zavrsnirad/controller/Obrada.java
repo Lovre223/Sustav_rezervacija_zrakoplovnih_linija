@@ -15,60 +15,53 @@ import zavrsnirad.util.HibernateUtil;
  * @author lovre
  */
 public abstract class Obrada<T extends Entitet> {
-    
+
     protected T entitet;
-    
+
     protected Session session;
-    
+
     public abstract List<T> read();
-    
-    
+
     protected abstract void kontrolaUnos() throws AppException;
-    
+
     protected abstract void kontrolaPromjena() throws AppException;
-    
+
     protected abstract void kontrolaBrisanje() throws AppException;
 
     public Obrada() {
         this.session = HibernateUtil.getSession();
-    
+
     }
-    
-    
-    public void create() throws AppException{
-        if(entitet == null){
-                   throw new AppException("Entitet je null");
+
+    public void create() throws AppException {
+        if (entitet == null) {
+            throw new AppException("Entitet je null");
         }
-        
+
         kontrolaUnos();
         persist();
-       
-    
+
     }
-    
-    public void update() throws AppException{
+
+    public void update() throws AppException {
         kontrolaPromjena();
         persist();
-    
-    
+
     }
-    
-    
-    public void delete() throws AppException{
-         kontrolaBrisanje();
-         session.beginTransaction();
-         session.remove(entitet);
-         session.getTransaction().commit();
-    
-    
+
+    public void delete() throws AppException {
+        kontrolaBrisanje();
+        session.beginTransaction();
+        session.remove(entitet);
+        session.getTransaction().commit();
+
     }
-    
-    private void persist(){
+
+    private void persist() {
         session.beginTransaction();
         session.persist(entitet);
         session.getTransaction().commit();
-    
-    
+
     }
 
     public T getEntitet() {
@@ -79,19 +72,4 @@ public abstract class Obrada<T extends Entitet> {
         this.entitet = entitet;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
