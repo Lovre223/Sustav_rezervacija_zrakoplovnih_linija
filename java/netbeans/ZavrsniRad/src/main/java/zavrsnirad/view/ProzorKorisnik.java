@@ -59,6 +59,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         btnDodaj = new javax.swing.JButton();
         btnTrazi = new javax.swing.JButton();
         btnBrisanje = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -114,6 +115,8 @@ public class ProzorKorisnik extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Promjeni");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,7 +159,10 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                         .addGap(200, 200, 200)
                         .addComponent(btnDodaj)
                         .addGap(51, 51, 51)
-                        .addComponent(btnBrisanje)))
+                        .addComponent(btnBrisanje))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jButton1)))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -197,7 +203,9 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDodaj)
                     .addComponent(btnBrisanje))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,6 +287,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnTrazi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -64,7 +64,7 @@ public class ObradaAvion extends Obrada<Avion> {
         }
         if (avioni != null && !avioni.isEmpty()) {
 
-            throw new AppException("Smjer s istim nazivom postoji u bazi");
+            throw new AppException("Avion s istim nazivom postoji u bazi");
 
         }
 
