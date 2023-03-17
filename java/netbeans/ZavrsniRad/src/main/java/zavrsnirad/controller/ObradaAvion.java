@@ -19,6 +19,24 @@ public class ObradaAvion extends Obrada<Avion> {
         return session.createQuery("from Avion order by naziv ", Avion.class).list();
 
     }
+    
+     public List<Avion> read(String uvjet, boolean traziOdPocetka) {
+            uvjet = uvjet.trim();
+        if (traziOdPocetka) {
+            uvjet = uvjet + "%";
+        } else {
+            uvjet = "%" + uvjet + "%";
+        }
+
+        return session.createQuery("from Avion " + "where naziv " + " like :uvjet " + "order by naziv",
+                Avion.class).setParameter("uvjet", uvjet).setMaxResults(20).list();
+            
+            
+        
+
+    }
+
+    
 
     @Override
     protected void kontrolaUnos() throws AppException {

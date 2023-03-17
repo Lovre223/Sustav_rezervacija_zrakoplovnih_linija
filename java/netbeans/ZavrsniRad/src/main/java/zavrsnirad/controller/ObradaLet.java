@@ -4,6 +4,7 @@
  */
 package zavrsnirad.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import zavrsnirad.model.Let;
 import zavrsnirad.util.AppException;
@@ -23,6 +24,7 @@ public class ObradaLet extends Obrada<Let> {
     @Override
     protected void kontrolaUnos() throws AppException {
         kontrolaBrojaLeta();
+        kontrolaCijena();
        
         
         
@@ -39,8 +41,8 @@ public class ObradaLet extends Obrada<Let> {
 
     private void kontrolaBrojaLeta() throws AppException {
             kontrolaRaspon();
-            kontrolaSlovo();
-           
+       
+            
             
 
     }
@@ -54,23 +56,20 @@ public class ObradaLet extends Obrada<Let> {
 
     }       
 
-    private void kontrolaSlovo() throws AppException {
-         String znak = Integer.toString(entitet.getBr_leta());
-         char[] niz = znak.toCharArray();
-                
-           for(int i = 0;i<niz.length;i++){
-                
-                    if(!Character.isDigit(niz[i])){
-                    
-                        throw new AppException("Mora biti broj!!");
-                    }
-                    
-           
-           }     
+    private void kontrolaCijena() throws AppException {
+              if(entitet.getCijena() == null || entitet.getCijena().compareTo(BigDecimal.ZERO)<= 0 ||
+                    entitet.getCijena().compareTo(new BigDecimal(1000)) == 1){
+                    throw new AppException("Cijena mora biti postavljena, veća od 0 i manja od 10000");
+            
+            }
+
+    }
+
+    
             
           
     
-    }
+    
 
 }
     
