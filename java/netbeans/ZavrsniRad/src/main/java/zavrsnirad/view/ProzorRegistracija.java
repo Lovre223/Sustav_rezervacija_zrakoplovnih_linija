@@ -50,8 +50,8 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         txtOib = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnRegistracija = new javax.swing.JButton();
-        txtLozinka = new javax.swing.JTextField();
-        txtPotvrdaLozinke = new javax.swing.JTextField();
+        txtLozinka = new javax.swing.JPasswordField();
+        txtPotvrda = new javax.swing.JPasswordField();
 
         jTextField6.setText("jTextField1");
 
@@ -79,37 +79,37 @@ public class ProzorRegistracija extends javax.swing.JFrame {
             }
         });
 
-        txtLozinka.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLozinkaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(txtIme)
-                    .addComponent(txtEmail)
-                    .addComponent(txtOib)
+                        .addGap(96, 96, 96)
+                        .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(btnRegistracija))
-                    .addComponent(txtLozinka)
-                    .addComponent(txtPotvrdaLozinke))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(txtIme)
+                            .addComponent(txtEmail)
+                            .addComponent(txtOib)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(btnRegistracija))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPotvrda)
+                                .addGap(24, 24, 24)))))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,10 +138,10 @@ public class ProzorRegistracija extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPotvrdaLozinke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPotvrda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(btnRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -155,27 +155,12 @@ public class ProzorRegistracija extends javax.swing.JFrame {
             
             dodajOperatera();
             
-            try {
-            obrada.create();
-            
-            JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
-            new ProzorLogin().setVisible(true);
-            dispose();
-            
-        } catch (AppException ex) {
-                
-            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
-            return;
-        }
+          
             
             
         
         
     }//GEN-LAST:event_btnRegistracijaActionPerformed
-
-    private void txtLozinkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLozinkaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLozinkaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,13 +179,23 @@ public class ProzorRegistracija extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIme;
-    private javax.swing.JTextField txtLozinka;
+    private javax.swing.JPasswordField txtLozinka;
     private javax.swing.JTextField txtOib;
-    private javax.swing.JTextField txtPotvrdaLozinke;
+    private javax.swing.JPasswordField txtPotvrda;
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
     private void dodajOperatera() {
+        
+        
+        
+         if(!Arrays.equals( txtLozinka.getPassword(),  txtPotvrda.getPassword())){
+         
+                       JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije potvrđena");
+         
+                       return;
+         }
+        
          var o = obrada.getEntitet();
          
          o.setIme(txtIme.getText());
@@ -208,18 +203,22 @@ public class ProzorRegistracija extends javax.swing.JFrame {
          o.setPrezime(txtPrezime.getText());
          o.setOib(txtOib.getText());
          o.setEmail(txtEmail.getText());
-         o.setLozinka(BCrypt.hashpw(txtLozinka.getText(), BCrypt.gensalt()).toCharArray());
+         o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
          
+           try {
+            obrada.create();
+            
+            JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
+            new ProzorLogin().setVisible(true);
+            dispose();
+            
+        } catch (AppException ex) {
+                
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            return;
+        }
          
-         char[] lozinka = txtLozinka.getText().toCharArray();
-         char[] potvrda = txtPotvrdaLozinke.getText().toCharArray();
-         
-         if(!Arrays.equals( lozinka,  potvrda)){
-         
-                       JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije potvrđena");
-         
-         
-         }
+        
          
          
          
