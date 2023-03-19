@@ -25,6 +25,7 @@ public class ObradaLet extends Obrada<Let> {
     protected void kontrolaUnos() throws AppException {
         kontrolaBrojaLeta();
         kontrolaCijena();
+        kontrolaTrajanjeLeta();
        
         
         
@@ -63,6 +64,11 @@ public class ObradaLet extends Obrada<Let> {
             
             }
 
+    }
+
+    private void kontrolaTrajanjeLeta() {
+
+        
     }
 
     

@@ -76,6 +76,7 @@ public class ObradaOperater extends Obrada<Operater>{
         kontrolaPrezime();
         kontrolaEmail();
         kontrolaOib();
+        kontrolaLozinka();
         
         
     }
@@ -135,6 +136,30 @@ public class ObradaOperater extends Obrada<Operater>{
             throw new AppException("Oib nije valjan");
         }
 
+    }
+
+    private void kontrolaLozinka() throws AppException {
+        kontrolaDuljine();
+        kontrolaMaloVelikoSlovo();
+        
+
+
+    }
+
+    private void kontrolaDuljine()throws AppException {
+        if(entitet.getLozinka().length < 8){
+        
+                throw new AppException("Premala duljina lozinke");
+        
+        }
+        
+        
+        
+    }
+
+    private void kontrolaMaloVelikoSlovo() {
+        
+               
     }
 
     
