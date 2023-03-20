@@ -16,9 +16,9 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ProzorRegistracija extends javax.swing.JFrame {
-        private ObradaOperater obrada;
-    
-    
+
+    private ObradaOperater obrada;
+
     /**
      * Creates new form ProzorRegistracija
      */
@@ -151,21 +151,16 @@ public class ProzorRegistracija extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistracijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistracijaActionPerformed
-            obrada.setEntitet(new Operater());
-            
-            dodajOperatera();
-            
-          
-            
-            
-        
-        
+        obrada.setEntitet(new Operater());
+
+        dodajOperatera();
+
+
     }//GEN-LAST:event_btnRegistracijaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistracija;
@@ -186,43 +181,39 @@ public class ProzorRegistracija extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void dodajOperatera() {
+
+        if (!Arrays.equals(txtLozinka.getPassword(), txtPotvrda.getPassword())) {
+
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije potvrđena");
+
+            return;
+        }
+
+        var o = obrada.getEntitet();
+
+        o.setIme(txtIme.getText());
+
+        o.setPrezime(txtPrezime.getText());
+        o.setOib(txtOib.getText());
+        o.setEmail(txtEmail.getText());
+        o.setLozinka(txtLozinka.getPassword());
+ 
         
         
-        
-         if(!Arrays.equals( txtLozinka.getPassword(),  txtPotvrda.getPassword())){
-         
-                       JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije potvrđena");
-         
-                       return;
-         }
-        
-         var o = obrada.getEntitet();
-         
-         o.setIme(txtIme.getText());
-         
-         o.setPrezime(txtPrezime.getText());
-         o.setOib(txtOib.getText());
-         o.setEmail(txtEmail.getText());
-         o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
-         
-           try {
+        try {
             obrada.create();
-            
+
+            o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
+
             JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
             new ProzorLogin().setVisible(true);
             dispose();
-            
+
         } catch (AppException ex) {
-                
+
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
             return;
         }
-         
-        
-         
-         
-         
-        
-        
+
     }
 }
