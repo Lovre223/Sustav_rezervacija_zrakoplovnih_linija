@@ -196,8 +196,9 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         o.setPrezime(txtPrezime.getText());
         o.setOib(txtOib.getText());
         o.setEmail(txtEmail.getText());
-        o.setLozinka(txtLozinka.getPassword());
- 
+        
+        
+      
         
         
         try {
