@@ -26,6 +26,8 @@ public class ObradaLet extends Obrada<Let> {
         kontrolaBrojaLeta();
         kontrolaCijena();
         kontrolaTrajanjeLeta();
+        kontrolaAvion();
+        kontrolaAviokompanija();
        
         
         
@@ -69,6 +71,22 @@ public class ObradaLet extends Obrada<Let> {
     private void kontrolaTrajanjeLeta() {
 
         
+    }
+
+    private void kontrolaAvion() throws AppException {
+            if(entitet.getAvion().getSifra()== 0){
+            
+                throw  new AppException("Obavezan unos aviona!!!");
+            }
+
+    }
+
+    private void kontrolaAviokompanija() throws AppException {
+            if(entitet.getAvion().getSifra()== 0){
+            
+            throw new  AppException("Obavezan unos aviokompanije!!!");
+            }
+
     }
 
     

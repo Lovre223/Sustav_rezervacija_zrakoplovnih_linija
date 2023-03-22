@@ -5,6 +5,9 @@
 package zavrsnirad.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.DateTimePicker;
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Locale;
@@ -67,10 +70,10 @@ public class ProzorLet extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmbAviokompanija = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        dpDatumPolaska = new com.github.lgooddatepicker.components.DatePicker();
         jLabel5 = new javax.swing.JLabel();
-        dpDatumDolaska = new com.github.lgooddatepicker.components.DatePicker();
         jLabel6 = new javax.swing.JLabel();
+        dtpVrijemeDolaska = new com.github.lgooddatepicker.components.DateTimePicker();
+        dtpVrijemePolaska = new com.github.lgooddatepicker.components.DateTimePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -110,9 +113,9 @@ public class ProzorLet extends javax.swing.JFrame {
 
         jLabel4.setText("Aviokompanija");
 
-        jLabel5.setText("Datum polaska");
+        jLabel5.setText("Vrijeme polaska");
 
-        jLabel6.setText("Datum dolaska");
+        jLabel6.setText("Vrijeme dolaska");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +123,9 @@ public class ProzorLet extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(btnDodaj))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,14 +140,11 @@ public class ProzorLet extends javax.swing.JFrame {
                                 .addComponent(cmbAvioni, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cmbAviokompanija, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4))
-                            .addComponent(dpDatumPolaska, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(dpDatumDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnDodaj)))
-                .addContainerGap(219, Short.MAX_VALUE))
+                            .addComponent(jLabel6)
+                            .addComponent(dtpVrijemeDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dtpVrijemePolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +153,9 @@ public class ProzorLet extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtBrojLeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -160,22 +166,21 @@ public class ProzorLet extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbAvioni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbAviokompanija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dpDatumPolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                        .addGap(20, 20, 20)
+                        .addComponent(dtpVrijemePolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dpDatumDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
+                .addComponent(dtpVrijemeDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(btnDodaj)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,8 +229,8 @@ public class ProzorLet extends javax.swing.JFrame {
     private javax.swing.JButton btnDodaj;
     private javax.swing.JComboBox<Aviokompanija> cmbAviokompanija;
     private javax.swing.JComboBox<Avion> cmbAvioni;
-    private com.github.lgooddatepicker.components.DatePicker dpDatumDolaska;
-    private com.github.lgooddatepicker.components.DatePicker dpDatumPolaska;
+    private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemeDolaska;
+    private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemePolaska;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -259,7 +264,7 @@ public class ProzorLet extends javax.swing.JFrame {
         cmbAvioni.setSelectedItem(l.getAvion());
         cmbAviokompanija.setSelectedItem(l.getAviokompanija());
         
-          if(l.getVijeme_dolaska()!=null){
+         /* if(l.getVijeme_dolaska()!=null){
               LocalDate ld = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
               dpDatumDolaska.setDate(ld);
         }else{
@@ -270,8 +275,8 @@ public class ProzorLet extends javax.swing.JFrame {
               LocalDate ld = l.getVrijeme_polaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
               dpDatumPolaska.setDate(ld);
         }else{
-            dpDatumPolaska.setDate(null);
-        }
+            dpDatumPolaska.setDate(null);*/
+        //}
         
         
 
@@ -304,10 +309,17 @@ public class ProzorLet extends javax.swing.JFrame {
 
     private void definirajDatumPolaska() {
         DatePickerSettings dps = new DatePickerSettings(Locale.of("hr", "HR"));
-        dps.setFormatForDatesCommonEra("dd. MM. YYYY.");
+        dps.setFormatForDatesCommonEra("dd. MM. YYY. ");
         dps.setTranslationClear("Očisti");
-        dps.setTranslationToday("Danas");
-        dpDatumPolaska.setSettings(dps);
-
+       dtpVrijemePolaska.datePicker.setSettings(dps);
+        
+       // TimePickerSettings tps = new TimePickerSettings(Locale.of("hr", "HR"));
+       // tps.set
+        
+       
+        
+        
+        
+        
     }
 }
