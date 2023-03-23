@@ -60,6 +60,10 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         btnTrazi = new javax.swing.JButton();
         btnBrisanje = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,6 +120,23 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         });
 
         jButton1.setText("Promjeni");
+
+        jMenu2.setText("File");
+
+        jMenuItem1.setText("Izlaz");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,7 +226,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                     .addComponent(btnBrisanje))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,6 +299,11 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBrisanjeActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new ProzorIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +320,10 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Korisnik> lstPodaci;
     private javax.swing.JTextField txtAdresa;
