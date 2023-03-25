@@ -196,25 +196,62 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         o.setPrezime(txtPrezime.getText());
         o.setOib(txtOib.getText());
         o.setEmail(txtEmail.getText());
-        
-        
-      
-        
-        
-        try {
-            obrada.create();
 
-            o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
+        if (lozinkaValjana(txtLozinka.getPassword())) {
 
-            JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
-            new ProzorLogin().setVisible(true);
-            dispose();
+            try {
+                obrada.create();
 
-        } catch (AppException ex) {
+                o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
 
-            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
-            return;
+                JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
+                new ProzorLogin().setVisible(true);
+                dispose();
+
+            } catch (AppException ex) {
+
+                JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+                return;
+            }
+        }
+    }
+
+    private boolean lozinkaValjana(char[] password) {
+        if (password.length >= 8 && sadrziVelikoIMaloSlovo(password)) {
+
+            return true;
+        } else {
+
+            return false;
+
         }
 
+    }
+
+    private boolean sadrziVelikoIMaloSlovo(char[] password) {
+        int brojacMalih = 0;
+        int brojacVelikih = 0;
+
+        for (char c : password) {
+
+            if (password[c] >= 'a' && password[c] <= 'z') {
+
+                brojacMalih++;
+
+            }
+            if (password[c] >= 'A' && password[c] <= 'Z') {
+
+                brojacVelikih++;
+            }
+
+        }
+
+        if (brojacVelikih >= 1 && brojacMalih >= 1) {
+
+            return true;
+        } else {
+
+            return false;
+        }
     }
 }

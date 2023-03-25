@@ -9,7 +9,6 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -351,7 +350,7 @@ public class ProzorLet extends javax.swing.JFrame {
         
        TimePickerSettings tps = new TimePickerSettings(Locale.of("hr", "HR"));
        tps.setFormatForDisplayTime(DateTimeFormatter.ISO_LOCAL_TIME);
-       tps
+       dtpVrijemePolaska.timePicker.
        
         
        
