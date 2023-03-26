@@ -200,9 +200,11 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         if (lozinkaValjana(txtLozinka.getPassword())) {
 
             try {
+                
+                o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
                 obrada.create();
 
-                o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
+             
 
                 JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
                 new ProzorLogin().setVisible(true);
@@ -213,6 +215,10 @@ public class ProzorRegistracija extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
                 return;
             }
+        }else{
+        
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije valjana");
+        
         }
     }
 

@@ -130,46 +130,5 @@ public class ObradaOperater extends Obrada<Operater> {
 
     }
 
-    private void kontrolaLozinka() throws AppException {
-        kontrolaDuljine();
-        kontrolaMaloVelikoSlovo();
-
-    }
-
-    private void kontrolaDuljine() throws AppException {
-        if (entitet.getLozinka().length < 8) {
-
-            throw new AppException("Premala duljina lozinke");
-
-        }
-
-    }
-
-    private void kontrolaMaloVelikoSlovo() throws AppException {
-        int brojacVelikih = 0;
-        int brojacMalih = 0;
-      
-        
-        char[] niz = entitet.getLozinka();
-
-        for (char a : niz) {
-
-            if (Character.isUpperCase(a)) {
-
-                brojacVelikih++;
-            } else {
-
-                brojacMalih++;
-            }
-
-        }
-        
-        if(brojacVelikih == 0 || brojacMalih == 0){
-        
-            throw new AppException("Lozinka mora sadržavati barem jedno malo i veliko slovo");
-        
-        }
-
-    }
-
+ 
 }
