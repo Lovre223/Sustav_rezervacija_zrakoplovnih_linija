@@ -72,7 +72,7 @@ public class ObradaOperater extends Obrada<Operater> {
         kontrolaPrezime();
         kontrolaEmail();
         kontrolaOib();
-        kontrolaLozinka();
+      
 
     }
 

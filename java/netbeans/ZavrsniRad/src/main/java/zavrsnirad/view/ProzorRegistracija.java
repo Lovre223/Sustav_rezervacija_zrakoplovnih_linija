@@ -79,37 +79,38 @@ public class ProzorRegistracija extends javax.swing.JFrame {
             }
         });
 
+        txtPotvrda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPotvrdaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(txtIme)
-                            .addComponent(txtEmail)
-                            .addComponent(txtOib)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(btnRegistracija))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPotvrda)
-                                .addGap(24, 24, 24)))))
+                    .addComponent(txtPotvrda, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(28, 28, 28)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel5)
+                        .addComponent(txtIme)
+                        .addComponent(txtEmail)
+                        .addComponent(txtOib)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addComponent(btnRegistracija))))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,6 +159,10 @@ public class ProzorRegistracija extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRegistracijaActionPerformed
 
+    private void txtPotvrdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPotvrdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPotvrdaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,15 +201,14 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         o.setPrezime(txtPrezime.getText());
         o.setOib(txtOib.getText());
         o.setEmail(txtEmail.getText());
+        System.out.println(txtLozinka.getPassword().length);
 
         if (lozinkaValjana(txtLozinka.getPassword())) {
 
             try {
-                
+
                 o.setLozinka(BCrypt.hashpw(new String(txtLozinka.getPassword()), BCrypt.gensalt()).toCharArray());
                 obrada.create();
-
-             
 
                 JOptionPane.showMessageDialog(getRootPane(), "Uspješno ste se registrirali!!!");
                 new ProzorLogin().setVisible(true);
@@ -215,23 +219,23 @@ public class ProzorRegistracija extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
                 return;
             }
-        }else{
-        
-            JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije valjana");
-        
+        } else {
+
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije dovoljno snažna");
+
         }
     }
 
     private boolean lozinkaValjana(char[] password) {
-        if (password.length >= 8 && sadrziVelikoIMaloSlovo(password)) {
 
+        if (password.length == 10 && sadrziVelikoIMaloSlovo(password)) {
+            
             return true;
-        } else {
 
-            return false;
+        }else{
 
+        return false;
         }
-
     }
 
     private boolean sadrziVelikoIMaloSlovo(char[] password) {
