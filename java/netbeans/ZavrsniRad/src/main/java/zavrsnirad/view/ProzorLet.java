@@ -9,8 +9,8 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -299,6 +299,11 @@ public class ProzorLet extends javax.swing.JFrame {
         cmbAvioni.setSelectedItem(l.getAvion());
         cmbAviokompanija.setSelectedItem(l.getAviokompanija());
         
+        LocalDate ld = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dtpVrijemeDolaska.datePicker.setDate(ld);
+        LocalTime lt = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+        dtpVrijemeDolaska.timePicker.setTime(lt);
+        
          /* if(l.getVijeme_dolaska()!=null){
               LocalDate ld = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
               dpDatumDolaska.setDate(ld);
@@ -349,8 +354,8 @@ public class ProzorLet extends javax.swing.JFrame {
        dtpVrijemePolaska.datePicker.setSettings(dps);
         
        TimePickerSettings tps = new TimePickerSettings(Locale.of("hr", "HR"));
-       tps.setFormatForDisplayTime(DateTimeFormatter.ISO_LOCAL_TIME);
-       dtpVrijemePolaska.timePicker.
+       tps.setFormatForDisplayTime("HH:MM");
+      
        
         
        
