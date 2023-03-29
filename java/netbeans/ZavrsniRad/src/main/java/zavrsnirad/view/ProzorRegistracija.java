@@ -228,7 +228,7 @@ public class ProzorRegistracija extends javax.swing.JFrame {
 
     private boolean lozinkaValjana(char[] password) {
 
-        if (password.length == 10 && sadrziVelikoIMaloSlovo(password)) {
+        if (password.length > 10 && sadrziVelikoIMaloSlovo(password)) {
             
             return true;
 
@@ -244,12 +244,12 @@ public class ProzorRegistracija extends javax.swing.JFrame {
 
         for (char c : password) {
 
-            if (password[c] >= 'a' && password[c] <= 'z') {
+            if (c >= 'a' && c <= 'z') {
 
                 brojacMalih++;
 
             }
-            if (password[c] >= 'A' && password[c] <= 'Z') {
+            if (c >= 'A' && c <= 'Z') {
 
                 brojacVelikih++;
             }
