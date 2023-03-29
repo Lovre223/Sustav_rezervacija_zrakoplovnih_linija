@@ -41,6 +41,7 @@ public class ProzorLet extends javax.swing.JFrame {
         ucitajAvione();
         ucitajAviokompanije();
         definirajDatumPolaska();
+        definirajDatumDolaska();
         ucitaj();
     }
 
@@ -299,9 +300,14 @@ public class ProzorLet extends javax.swing.JFrame {
         cmbAvioni.setSelectedItem(l.getAvion());
         cmbAviokompanija.setSelectedItem(l.getAviokompanija());
         
-        LocalDate ld = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate ld = l.getVrijeme_polaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dtpVrijemePolaska.datePicker.setDate(ld);
+        LocalTime lt = l.getVrijeme_polaska().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+        dtpVrijemePolaska.timePicker.setTime(lt);
+        
+        LocalDate ldd = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dtpVrijemeDolaska.datePicker.setDate(ld);
-        LocalTime lt = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+        LocalTime ltd = l.getVijeme_dolaska().toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
         dtpVrijemeDolaska.timePicker.setTime(lt);
         
          /* if(l.getVijeme_dolaska()!=null){
@@ -364,4 +370,16 @@ public class ProzorLet extends javax.swing.JFrame {
         
         
     }
+    
+    private void definirajDatumDolaska(){
+         DatePickerSettings dps = new DatePickerSettings(Locale.of("hr", "HR"));
+        dps.setFormatForDatesCommonEra("dd. MM. YYY. ");
+        dps.setTranslationClear("Očisti");
+       dtpVrijemeDolaska.datePicker.setSettings(dps);
+        
+       TimePickerSettings tps = new TimePickerSettings(Locale.of("hr", "HR"));
+       tps.setFormatForDisplayTime("HH:MM");
+      
+
+}
 }
