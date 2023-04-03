@@ -4,8 +4,16 @@
  */
 package zavrsnirad.view;
 
-/**
- *
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
+ /*
  * @author lovre
  */
 public class ProzorIzbornik extends javax.swing.JFrame {
@@ -15,6 +23,8 @@ public class ProzorIzbornik extends javax.swing.JFrame {
      */
     public ProzorIzbornik() {
         initComponents();
+        prikaziGraf();
+    
     }
 
     /**
@@ -26,6 +36,7 @@ public class ProzorIzbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlGraf = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -37,6 +48,17 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        javax.swing.GroupLayout pnlGrafLayout = new javax.swing.GroupLayout(pnlGraf);
+        pnlGraf.setLayout(pnlGrafLayout);
+        pnlGrafLayout.setHorizontalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 388, Short.MAX_VALUE)
+        );
+        pnlGrafLayout.setVerticalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 237, Short.MAX_VALUE)
+        );
 
         jMenu2.setText("Programi");
 
@@ -95,11 +117,17 @@ public class ProzorIzbornik extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(pnlGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,5 +177,32 @@ public class ProzorIzbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPanel pnlGraf;
     // End of variables declaration//GEN-END:variables
+
+    private void prikaziGraf() {
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+ 
+    dataset.addValue(100, "Broj aviona", " Avioni");
+    dataset.addValue(50, "Broj aviokompanija", "Aviokompanije");
+    dataset.addValue(100, "Broj letova", " Letovi");
+    dataset.addValue(500, "Broj korisnika", "Rezervacije");
+      
+    JFreeChart chart = ChartFactory.createBarChart("Podaci u aplikaciji ",""," ", dataset, PlotOrientation.HORIZONTAL,true,true,false);
+    chart.setBackgroundPaint(new Color(239, 239, 239));
+    
+    
+    ChartPanel chartPanel = new ChartPanel(chart);
+
+    chartPanel.setPreferredSize(new Dimension(400, 300));
+    chartPanel.setBounds(0, 0, 387, 237);
+
+    // Dodaj chartPanel na pnlGraf
+    pnlGraf.add(chartPanel);
+    
+    pnlGraf.revalidate();
+        
+      
+
+    }
 }
