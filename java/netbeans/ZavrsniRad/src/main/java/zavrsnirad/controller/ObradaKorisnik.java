@@ -32,6 +32,27 @@ public  class ObradaKorisnik extends Obrada<Korisnik>{
                .setMaxResults(100)
                .list();
     }
+     
+     
+     public List<Korisnik> read(String uvjet, boolean traziOdPocetkaImena){
+            uvjet = uvjet.trim();
+            if(traziOdPocetkaImena){
+                uvjet = uvjet + "%";
+                
+            }else{
+                   uvjet = "%" + uvjet + "%";
+            }
+     
+            return session.createQuery("from Korisnik "
+               + " where concat(ime,' ',prezime,' ',ime) "
+               + " like :uvjet "
+               + " order by prezime, ime ", 
+               Korisnik.class)
+               .setParameter("uvjet", uvjet)
+               .setMaxResults(12)
+               .list();
+     
+     }
   
 
     @Override
