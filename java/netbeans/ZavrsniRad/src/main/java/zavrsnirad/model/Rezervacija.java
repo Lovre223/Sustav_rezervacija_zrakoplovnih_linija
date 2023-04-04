@@ -23,8 +23,7 @@ public class Rezervacija extends Entitet {
 		super();
 	}
 
-	public Rezervacija(int sifra, Let let, Korisnik korisnik, String klasa) {
-		super(sifra);
+	public Rezervacija(Let let, Korisnik korisnik, String klasa) {
 		this.let = let;
 		this.korisnik = korisnik;
 		this.klasa = klasa;
@@ -53,6 +52,13 @@ public class Rezervacija extends Entitet {
 	public void setKlasa(String klasa) {
 		this.klasa = klasa;
 	}
+
+    @Override
+    public String toString() {
+        return getKorisnik().getPrezime();
+
+    }
 	
+        
 
 }

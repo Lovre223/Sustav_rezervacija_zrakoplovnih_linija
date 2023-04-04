@@ -27,7 +27,7 @@ public class Let extends Entitet {
     private Aviokompanija aviokompanija;
 
     @OneToMany(mappedBy = "let")
-    private List<Rezervacija> rezervacije;
+    private List<Rezervacija> rezervacije = new ArrayList<>();
    
     public Let() {
         super();
