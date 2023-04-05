@@ -48,14 +48,14 @@ public class ProzorLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Passsword");
 
-        txtEmail.setText("anteantic@gmail.com");
+        txtEmail.setText("lovrep@gmail.com");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
 
-        pswLozinka.setText("ante");
+        pswLozinka.setText("lovre123");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Login Page");

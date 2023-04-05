@@ -158,6 +158,7 @@ public class ProzorIzbornik extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         new ProzorLet().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
