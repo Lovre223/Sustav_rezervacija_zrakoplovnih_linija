@@ -4,6 +4,7 @@
  */
 package zavrsnirad.view;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JProgressBar;
@@ -26,6 +27,7 @@ public class SplashScreen extends javax.swing.JFrame {
         initComponents();
         p = new JProgressBar();
         setTitle("Učitavanje aplikacije...✈️");
+        getContentPane().setBackground(Color.white);
         
         ucitaj();
     }
@@ -44,41 +46,23 @@ public class SplashScreen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pbar.setBackground(new java.awt.Color(255, 255, 255));
         pbar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pbar.setForeground(new java.awt.Color(0, 255, 51));
+        pbar.setForeground(new java.awt.Color(102, 102, 0));
         pbar.setRequestFocusEnabled(false);
         pbar.setStringPainted(true);
+        getContentPane().add(pbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 259, 22));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Loading...");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 202, 40));
 
+        jLabel3.setForeground(new java.awt.Color(254, 250, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/avion3.png"))); // NOI18N
         jLabel3.setText("jLabel3");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(pbar, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pbar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 778, 530));
 
         pack();
         setLocationRelativeTo(null);

@@ -4,6 +4,9 @@
  */
 package zavrsnirad.view;
 
+import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import zavrsnirad.controller.ObradaOperater;
 import zavrsnirad.model.Operater;
 import zavrsnirad.util.Aplikacija;
@@ -22,6 +25,22 @@ public class ProzorLogin extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaOperater();
         setTitle("Airline Reservation System Login");
+        
+        getContentPane().setBackground(Color.white);
+    
+         //scaleImg();
+    }  
+    
+    
+    public void scaleImg(){
+            ImageIcon icon = new ImageIcon(getClass().getResource("C:\\Users\\lovre\\OneDrive\\Radna površina\\cekanje.jpg"));
+            Image img = icon.getImage();
+            Image imgscl = img.getScaledInstance(jLabel4.getWidth(),jLabel4.getHeight(),Image.SCALE_SMOOTH);
+            ImageIcon sclit = new ImageIcon(imgscl);
+            jLabel4.setIcon(sclit);
+       
+            
+    
     }
 
     /**
@@ -41,11 +60,14 @@ public class ProzorLogin extends javax.swing.JFrame {
         btnPrijava = new javax.swing.JButton();
         lblPoruka = new javax.swing.JLabel();
         lblRegistracija = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Email");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Passsword");
 
         txtEmail.setText("lovrep@gmail.com");
@@ -57,7 +79,7 @@ public class ProzorLogin extends javax.swing.JFrame {
 
         pswLozinka.setText("lovre123");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Login Page");
 
         btnPrijava.setText("Prijava");
@@ -67,7 +89,7 @@ public class ProzorLogin extends javax.swing.JFrame {
             }
         });
 
-        lblRegistracija.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
+        lblRegistracija.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         lblRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegistracija.setText("Registracija novog operatera");
         lblRegistracija.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,18 +98,20 @@ public class ProzorLogin extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cekanje3.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
                                 .addComponent(btnPrijava))
@@ -97,20 +121,18 @@ public class ProzorLogin extends javax.swing.JFrame {
                                 .addComponent(txtEmail)
                                 .addComponent(pswLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(jLabel3)))
-                        .addContainerGap(175, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel3)))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,11 +142,14 @@ public class ProzorLogin extends javax.swing.JFrame {
                 .addComponent(pswLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPrijava)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPoruka, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -154,6 +179,7 @@ public class ProzorLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblPoruka;
     private javax.swing.JLabel lblRegistracija;
     private javax.swing.JPasswordField pswLozinka;

@@ -47,7 +47,6 @@ public class ObradaAvion extends Obrada<Avion> {
 
     @Override
     protected void kontrolaPromjena() throws AppException {
-          kontrolaNaziv();
           kontrolaKapacitet();
     
         

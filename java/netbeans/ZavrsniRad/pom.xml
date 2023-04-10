@@ -69,14 +69,12 @@
     <artifactId>jfreechart</artifactId>
     <version>1.5.4</version>
 </dependency>
-
-
-        
-
-
-        
-        
-    </dependencies>
+            <dependency>
+                  <groupId>org.netbeans.external</groupId>
+                  <artifactId>AbsoluteLayout</artifactId>
+                  <version>RELEASE160</version>
+            </dependency>
+      </dependencies>
     
     
     

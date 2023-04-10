@@ -59,7 +59,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         btnDodaj = new javax.swing.JButton();
         btnTrazi = new javax.swing.JButton();
         btnBrisanje = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -119,7 +119,12 @@ public class ProzorKorisnik extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Promjeni");
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
 
         jMenu2.setText("File");
 
@@ -183,7 +188,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                         .addComponent(btnBrisanje))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(254, 254, 254)
-                        .addComponent(jButton1)))
+                        .addComponent(btnPromjeni)))
                 .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -225,7 +230,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                     .addComponent(btnDodaj)
                     .addComponent(btnBrisanje))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnPromjeni)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -304,6 +309,25 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+         if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Odaberite jednog od korisnika za promjenu!!");
+            return;
+
+        }
+
+        dodajNovog();
+
+        try {
+            obrada.update();
+            ucitaj();
+        } catch (AppException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+
+        }
+
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,8 +336,8 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnTrazi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

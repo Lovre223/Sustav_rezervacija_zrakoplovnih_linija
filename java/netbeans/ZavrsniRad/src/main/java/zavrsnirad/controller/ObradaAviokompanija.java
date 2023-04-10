@@ -29,13 +29,14 @@ public class ObradaAviokompanija extends Obrada<Aviokompanija>{
 
     @Override
     protected void kontrolaPromjena() throws AppException {
-       kontrolaNaziv();
+             kontrolaNazivNull();
 
     }
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    
     }
 
     private void kontrolaNaziv() throws AppException {

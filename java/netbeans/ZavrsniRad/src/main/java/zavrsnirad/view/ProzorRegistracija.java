@@ -4,6 +4,7 @@
  */
 package zavrsnirad.view;
 
+import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
@@ -26,6 +27,9 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaOperater();
         setTitle("Registracija");
+        getContentPane().setBackground(Color.white);
+        
+        
     }
 
     /**
