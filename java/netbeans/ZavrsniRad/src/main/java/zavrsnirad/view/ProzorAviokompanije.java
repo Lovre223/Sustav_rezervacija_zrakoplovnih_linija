@@ -136,7 +136,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Izlaz");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -297,8 +297,8 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
             
             lstLet.setModel(m);
             lstLet.repaint();
-        
-
+            
+            
     }
 
     private void dodajNovi() {

@@ -311,11 +311,7 @@ public class ProzorAvioni extends javax.swing.JFrame {
         lstLet.setModel(m);
         lstLet.repaint();
 
-        btnBrisanje.setVisible(false);
-        if (a.getLetovi() == null || a.getLetovi().isEmpty()) {
-            btnBrisanje.setVisible(true);
-
-        }
+      
     }
 
     private void dodajNovi() {

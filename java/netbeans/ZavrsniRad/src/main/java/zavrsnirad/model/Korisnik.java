@@ -40,6 +40,17 @@ public class Korisnik extends Entitet {
        
     }
 
+    public List<Rezervacija> getRezervacije() {
+        return rezervacije;
+    }
+
+    public void setRezervacije(List<Rezervacija> rezervacije) {
+        this.rezervacije = rezervacije;
+    }
+    
+    
+    
+
     public String getIme() {
         return ime;
     }

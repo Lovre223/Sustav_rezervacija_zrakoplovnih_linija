@@ -35,6 +35,11 @@ public class ObradaAviokompanija extends Obrada<Aviokompanija>{
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
+         if(entitet.getLetovi()!= null &&
+                !entitet.getLetovi().isEmpty()){
+        throw new AppException("Aviokompanija se ne može brisati"
+                + " jer se nalazi na letu ");
+    }
     
     
     }

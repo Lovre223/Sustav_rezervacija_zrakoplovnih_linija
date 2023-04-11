@@ -36,14 +36,24 @@ public class ObradaLet extends Obrada<Let> {
 
     @Override
     protected void kontrolaPromjena() throws AppException {
+        kontrolaCijena();
+        kontrolaTrajanjeLeta();
+        kontrolaAvion();
+        kontrolaAviokompanija();
     }
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
+         if(entitet.getRezervacije()!= null &&
+                !entitet.getRezervacije().isEmpty()){
+        throw new AppException("Let se ne može brisati"
+                + " jer ima rezervaciju/e ");
+    }
     }
 
     private void kontrolaBrojaLeta() throws AppException {
             kontrolaRaspon();
+            kontrolaDupliUBazi();
        
             
             
@@ -86,6 +96,22 @@ public class ObradaLet extends Obrada<Let> {
             
             throw new  AppException("Obavezan unos aviokompanije!!!");
             }
+
+    }
+
+    private void kontrolaDupliUBazi() throws AppException{
+         List<Let> letovi = null;
+
+        try {
+            letovi = session.createQuery("from Let l " + "where l.br_leta = :br_leta ", Let.class).setParameter("br_leta", entitet.getBr_leta()).list();
+        } catch (Exception e) {
+
+        }
+        if (letovi != null && !letovi.isEmpty()) {
+
+            throw new AppException("Let s istim brojem postoji u bazi");
+
+        }
 
     }
 

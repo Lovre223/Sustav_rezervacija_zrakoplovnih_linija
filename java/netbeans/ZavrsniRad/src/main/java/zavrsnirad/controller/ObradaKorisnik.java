@@ -77,10 +77,15 @@ public  class ObradaKorisnik extends Obrada<Korisnik>{
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
+         if(entitet.getRezervacije()!= null &&
+                !entitet.getRezervacije().isEmpty()){
+        throw new AppException("Korisnik  se ne može brisati"
+                + " jer ima rezervaciju ");
+    }
     }
 
     private void kontrolaIme() throws AppException {
-        kontrolaImeBroj();
+        //kontrolaImeBroj();
         kontrolaImeNull();
         kontrolaImeSadrziBroj();
 

@@ -4,6 +4,7 @@
  */
 package zavrsnirad.view;
 
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import zavrsnirad.controller.ObradaKorisnik;
@@ -25,6 +26,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     public ProzorKorisnik() {
         initComponents();
         obrada = new ObradaKorisnik();
+        getContentPane().setBackground(Color.white);
         
         btnTrazi.setText("🔍");
         
@@ -47,11 +49,9 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         txtUvjet = new javax.swing.JTextField();
         txtIme = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtPrezime = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtAdresa = new javax.swing.JTextField();
         txtOib = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -61,6 +61,9 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         btnPromjeni = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblUpozorenje = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -90,9 +93,6 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         jLabel2.setText("Ime");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 61, -1, -1));
 
-        jLabel3.setText("Prezime");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 117, -1, -1));
-
         txtPrezime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrezimeActionPerformed(evt);
@@ -105,9 +105,6 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
         jLabel6.setText("Adresa");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 234, -1, -1));
-
-        jLabel7.setText("Oib");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 179, -1, -1));
         getContentPane().add(txtAdresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 256, 128, -1));
         getContentPane().add(txtOib, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 201, 128, -1));
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 316, 128, -1));
@@ -147,21 +144,41 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
         jLabel1.setText("Popis korisnika");
 
+        jLabel3.setText("Prezime");
+
+        jLabel7.setText("Oib");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addContainerGap(617, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(445, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addGap(87, 87, 87)
+                .addComponent(jLabel3)
+                .addGap(49, 49, 49)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 470));
@@ -299,6 +316,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblUpozorenje;
     private javax.swing.JList<Korisnik> lstPodaci;
     private javax.swing.JTextField txtAdresa;
     private javax.swing.JTextField txtEmail;
@@ -337,8 +355,10 @@ public class ProzorKorisnik extends javax.swing.JFrame {
             txtAdresa.setText(k.getAdresa());
             txtEmail.setText(k.getEmail());
     
-    
-    
+        
+        
+        
+        
     }
     
     

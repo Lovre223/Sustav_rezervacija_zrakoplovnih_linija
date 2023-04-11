@@ -178,7 +178,7 @@ public class ProzorLet extends javax.swing.JFrame {
         getContentPane().add(dtpVrijemeDolaska, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 403, -1, -1));
         getContentPane().add(dtpVrijemePolaska, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 336, -1, -1));
 
-        jLabel7.setText("Trajanje leta");
+        jLabel7.setText("Trajanje leta(u minutama)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 432, -1, -1));
         getContentPane().add(txtTrajanjeLeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 454, 181, -1));
 
@@ -505,7 +505,7 @@ public class ProzorLet extends javax.swing.JFrame {
             l.setBr_leta(Integer.parseInt(txtBrojLeta.getText()));
         } catch (Exception ex) {
 
-            JOptionPane.showMessageDialog(getRootPane(), "Treba biti broj");
+            JOptionPane.showMessageDialog(getRootPane(), "Treba biti cijeli broj");
 
         }
 
@@ -521,7 +521,7 @@ public class ProzorLet extends javax.swing.JFrame {
         try {
             l.settrajanjeleta(Integer.parseInt(txtTrajanjeLeta.getText()));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(getRootPane(), "Treba biti broj");
+            JOptionPane.showMessageDialog(getRootPane(), "Treba biti cijeli broj");
 
         }
 
