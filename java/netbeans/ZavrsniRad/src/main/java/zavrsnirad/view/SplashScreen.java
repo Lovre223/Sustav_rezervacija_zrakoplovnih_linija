@@ -50,7 +50,7 @@ public class SplashScreen extends javax.swing.JFrame {
 
         pbar.setBackground(new java.awt.Color(255, 255, 255));
         pbar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        pbar.setForeground(new java.awt.Color(102, 102, 0));
+        pbar.setForeground(new java.awt.Color(102, 255, 102));
         pbar.setRequestFocusEnabled(false);
         pbar.setStringPainted(true);
         getContentPane().add(pbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 259, 22));

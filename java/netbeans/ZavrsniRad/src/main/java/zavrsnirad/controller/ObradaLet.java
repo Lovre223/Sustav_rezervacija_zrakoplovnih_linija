@@ -61,7 +61,7 @@ public class ObradaLet extends Obrada<Let> {
 
     private void kontrolaCijena() throws AppException {
               if(entitet.getCijena() == null || entitet.getCijena().compareTo(BigDecimal.ZERO)<= 0 ||
-                    entitet.getCijena().compareTo(new BigDecimal(1000)) == 1){
+                    entitet.getCijena().compareTo(new BigDecimal(10000)) == 1){
                     throw new AppException("Cijena mora biti postavljena, veća od 0 i manja od 10000");
             
             }
