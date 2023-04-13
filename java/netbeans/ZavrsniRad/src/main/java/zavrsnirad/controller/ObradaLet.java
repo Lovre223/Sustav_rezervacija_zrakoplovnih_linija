@@ -78,9 +78,14 @@ public class ObradaLet extends Obrada<Let> {
 
     }
 
-    private void kontrolaTrajanjeLeta() {
-
+    private void kontrolaTrajanjeLeta() throws AppException {
+                
+           if(entitet.gettrajanjeleta()<= 0 && entitet.gettrajanjeleta()> Integer.MAX_VALUE){
+            
+                throw new AppException("Trajanje leta mora biti u željenom rasponu");
+            }
         
+    
     }
 
     private void kontrolaAvion() throws AppException {
