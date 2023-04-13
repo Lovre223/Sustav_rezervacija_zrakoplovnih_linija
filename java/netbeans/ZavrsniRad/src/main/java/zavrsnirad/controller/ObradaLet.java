@@ -7,6 +7,7 @@ package zavrsnirad.controller;
 import java.math.BigDecimal;
 import java.util.List;
 import zavrsnirad.model.Let;
+import zavrsnirad.model.Rezervacija;
 import zavrsnirad.util.AppException;
 
 /**
@@ -40,6 +41,21 @@ public class ObradaLet extends Obrada<Let> {
         kontrolaTrajanjeLeta();
         kontrolaAvion();
         kontrolaAviokompanija();
+        
+        for(Rezervacija r: entitet.getRezervacije()){
+            kontrolaRezervacija(r);
+        }
+        
+        
+        
+    }
+    
+     public void kontrolaRezervacija(Rezervacija r) throws AppException {
+        
+            if(r.getKlasa()==null || r.getKlasa().isBlank()){
+                throw new AppException("Korisniku " + r.getKorisnik().getPrezime() + " nije unesena klasa");
+            }
+        
     }
 
     @Override

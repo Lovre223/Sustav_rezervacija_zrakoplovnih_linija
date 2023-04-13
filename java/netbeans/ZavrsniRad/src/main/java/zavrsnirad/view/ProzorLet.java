@@ -67,6 +67,24 @@ public class ProzorLet extends javax.swing.JFrame {
         lstPodaci.setModel(m);
         lstPodaci.repaint();
     }
+    
+    
+    public Rezervacija getOdabranuRezervaciju(){
+            return lstKorisniciNaLetu.getSelectedValue();
+}
+    
+    
+    public Let getOdabranLet(){
+            return lstPodaci.getSelectedValue();
+    
+    }
+    
+    public ObradaLet getObradaLet(){
+        return this.obrada;
+    
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
