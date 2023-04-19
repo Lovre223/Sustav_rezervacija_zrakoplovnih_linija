@@ -18,7 +18,7 @@ public class ObradaLet extends Obrada<Let> {
 
     @Override
     public List<Let> read() {
-        
+
         return session.createQuery("from Let", Let.class).list();
     }
 
@@ -29,10 +29,11 @@ public class ObradaLet extends Obrada<Let> {
         kontrolaTrajanjeLeta();
         kontrolaAvion();
         kontrolaAviokompanija();
-       
-        
-        
-        
+
+        for (Rezervacija r : entitet.getRezervacije()) {
+            kontrolaRezervacija(r);
+        }
+
     }
 
     @Override
@@ -41,87 +42,81 @@ public class ObradaLet extends Obrada<Let> {
         kontrolaTrajanjeLeta();
         kontrolaAvion();
         kontrolaAviokompanija();
-        
-        for(Rezervacija r: entitet.getRezervacije()){
+
+        for (Rezervacija r : entitet.getRezervacije()) {
             kontrolaRezervacija(r);
         }
-        
-        
-        
+
     }
-    
-     public void kontrolaRezervacija(Rezervacija r) throws AppException {
-        
-            if(r.getKlasa()==null || r.getKlasa().isBlank()){
-                throw new AppException("Korisniku " + r.getKorisnik().getPrezime() + " nije unesena klasa");
-            }
-        
+
+    public void kontrolaRezervacija(Rezervacija r) throws AppException {
+
+        if (r.getKlasa() == null || r.getKlasa().isBlank()) {
+            throw new AppException("Korisniku " + r.getKorisnik().getPrezime() + " nije unesena klasa");
+        }
+
     }
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
-         if(entitet.getRezervacije()!= null &&
-                !entitet.getRezervacije().isEmpty()){
-        throw new AppException("Let se ne može brisati"
-                + " jer ima rezervaciju/e ");
-    }
+        if (entitet.getRezervacije() != null
+                && !entitet.getRezervacije().isEmpty()) {
+            throw new AppException("Let se ne može brisati"
+                    + " jer ima rezervaciju/e ");
+        }
     }
 
     private void kontrolaBrojaLeta() throws AppException {
-            kontrolaRaspon();
-            kontrolaDupliUBazi();
-       
-            
-            
+        kontrolaRaspon();
+        kontrolaDupliUBazi();
 
     }
 
     private void kontrolaRaspon() throws AppException {
-            if(entitet.getBr_leta()<= 0 && entitet.getBr_leta()> Integer.MAX_VALUE){
-            
-                throw new AppException("Broj leta mora u željenom rasponu");
-            }
-        
+        if (entitet.getBr_leta() <= 0 && entitet.getBr_leta() > Integer.MAX_VALUE) {
 
-    }       
+            throw new AppException("Broj leta mora biti u željenom rasponu");
+        }
+
+    }
 
     private void kontrolaCijena() throws AppException {
-              if(entitet.getCijena() == null || entitet.getCijena().compareTo(BigDecimal.ZERO)<= 0 ||
-                    entitet.getCijena().compareTo(new BigDecimal(10000)) == 1){
-                    throw new AppException("Cijena mora biti postavljena, veća od 0 i manja od 10000");
-            
-            }
+        if (entitet.getCijena() == null
+                || entitet.getCijena().compareTo(BigDecimal.ZERO) <= 0
+                || entitet.getCijena().compareTo(new BigDecimal(10000)) == 1) {
+            throw new AppException("Cijena mora biti postavljena, "
+                    + "veća od 0 i manja od 10000");
+        }
 
     }
 
     private void kontrolaTrajanjeLeta() throws AppException {
-                
-           if(entitet.gettrajanjeleta()<= 0 && entitet.gettrajanjeleta()> Integer.MAX_VALUE){
-            
-                throw new AppException("Trajanje leta mora biti u željenom rasponu");
-            }
-        
-    
+
+        if (entitet.gettrajanjeleta() <= 0 && entitet.gettrajanjeleta() > Integer.MAX_VALUE) {
+
+            throw new AppException("Trajanje leta mora biti u željenom rasponu");
+        }
+
     }
 
     private void kontrolaAvion() throws AppException {
-            if(entitet.getAvion().getSifra()== 0){
-            
-                throw  new AppException("Obavezan unos aviona!!!");
-            }
+        if (entitet.getAvion().getSifra() == 0) {
+
+            throw new AppException("Obavezan unos aviona!!!");
+        }
 
     }
 
     private void kontrolaAviokompanija() throws AppException {
-            if(entitet.getAvion().getSifra()== 0){
-            
-            throw new  AppException("Obavezan unos aviokompanije!!!");
-            }
+        if (entitet.getAvion().getSifra() == 0) {
+
+            throw new AppException("Obavezan unos aviokompanije!!!");
+        }
 
     }
 
-    private void kontrolaDupliUBazi() throws AppException{
-         List<Let> letovi = null;
+    private void kontrolaDupliUBazi() throws AppException {
+        List<Let> letovi = null;
 
         try {
             letovi = session.createQuery("from Let l " + "where l.br_leta = :br_leta ", Let.class).setParameter("br_leta", entitet.getBr_leta()).list();
@@ -136,13 +131,4 @@ public class ObradaLet extends Obrada<Let> {
 
     }
 
-    
-            
-          
-    
-    
-
 }
-    
-
-   

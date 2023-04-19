@@ -124,8 +124,6 @@ public class ProzorLet extends javax.swing.JFrame {
         lstKorisniciUBazi = new javax.swing.JList<>();
         btnTrazi = new javax.swing.JButton();
         btnDodajKorisnika = new javax.swing.JButton();
-        txtKlasa = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         txtUvjet = new javax.swing.JTextField();
         btnObrisiKorisnika = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -224,6 +222,11 @@ public class ProzorLet extends javax.swing.JFrame {
         });
         getContentPane().add(btnObrisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 503, -1, -1));
 
+        lstKorisniciNaLetu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstKorisniciNaLetuMouseClicked(evt);
+            }
+        });
         lstKorisniciNaLetu.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstKorisniciNaLetuValueChanged(evt);
@@ -256,10 +259,6 @@ public class ProzorLet extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDodajKorisnika, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 270, -1, -1));
-        getContentPane().add(txtKlasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 670, 129, -1));
-
-        jLabel10.setText("Klasa");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 648, -1, -1));
         getContentPane().add(txtUvjet, new org.netbeans.lib.awtextra.AbsoluteConstraints(981, 6, 88, 30));
 
         btnObrisiKorisnika.setText(">>");
@@ -341,7 +340,7 @@ public class ProzorLet extends javax.swing.JFrame {
             obrada.create();
             ucitaj();
         } catch (AppException ex) {
-            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
 
         }
 
@@ -418,7 +417,7 @@ public class ProzorLet extends javax.swing.JFrame {
 
             if (!postoji) {
 
-                Rezervacija r = new Rezervacija(obrada.getEntitet(), kub, txtKlasa.getText());
+                Rezervacija r = new Rezervacija(obrada.getEntitet(), kub, "");
 
                 korisnici.addElement(r);
 
@@ -462,15 +461,21 @@ public class ProzorLet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObrisiKorisnikaActionPerformed
 
     private void lstKorisniciNaLetuValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstKorisniciNaLetuValueChanged
-        if (lstKorisniciNaLetu.getSelectedValue() == null) {
+          /*if (lstKorisniciNaLetu.getSelectedValue() == null) {
             return;
 
         }
         Rezervacija r = lstKorisniciNaLetu.getSelectedValue();
-        txtKlasa.setText(r.getKlasa());
-
-
+       */
     }//GEN-LAST:event_lstKorisniciNaLetuValueChanged
+
+    private void lstKorisniciNaLetuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstKorisniciNaLetuMouseClicked
+        if(evt.getClickCount()==2){
+           ProzorRezervacija pr = new ProzorRezervacija(this);
+           pr.setVisible(true);
+       }
+        
+    }//GEN-LAST:event_lstKorisniciNaLetuMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -485,7 +490,6 @@ public class ProzorLet extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemeDolaska;
     private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemePolaska;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -509,7 +513,6 @@ public class ProzorLet extends javax.swing.JFrame {
     private javax.swing.JList<Let> lstPodaci;
     private javax.swing.JTextField txtBrojLeta;
     private javax.swing.JTextField txtCijena;
-    private javax.swing.JTextField txtKlasa;
     private javax.swing.JTextField txtLukaDolazak;
     private javax.swing.JTextField txtLukaPolazak;
     private javax.swing.JTextField txtTrajanjeLeta;
@@ -566,6 +569,8 @@ public class ProzorLet extends javax.swing.JFrame {
 
         Date datum1 = Date.from(fromDateAndTime1.atZone(ZoneId.systemDefault()).toInstant());
 
+      
+        
         l.setVijeme_dolaska(datum1);
 
         List<Rezervacija> korisnici = new ArrayList<>();
@@ -576,9 +581,13 @@ public class ProzorLet extends javax.swing.JFrame {
                 korisnici.add(m.getElementAt(i));
             }
         } catch (Exception e) {
+            
+                
         }
 
         l.setRezervacije(korisnici);
+        System.out.println(l.getRezervacije().size());
+               
 
     }
 
@@ -586,7 +595,14 @@ public class ProzorLet extends javax.swing.JFrame {
         var l = obrada.getEntitet();
 
         txtBrojLeta.setText(String.valueOf(l.getBr_leta()));
-        txtCijena.setText(String.valueOf(l.getCijena()));
+        
+         try {
+            txtCijena.setText(df.format(l.getCijena()));
+        } catch (Exception e) {
+            txtCijena.setText("");
+        }
+         
+         
         cmbAvioni.setSelectedItem(l.getAvion());
         cmbAviokompanija.setSelectedItem(l.getAviokompanija());
         txtLukaDolazak.setText(l.getLuka_dolazak());
@@ -623,10 +639,15 @@ public class ProzorLet extends javax.swing.JFrame {
         DefaultListModel<Rezervacija> m = new DefaultListModel<>();
         if (l.getRezervacije() != null) {
             m.addAll(l.getRezervacije());
-            lstKorisniciNaLetu.setModel(m);
-            lstKorisniciNaLetu.repaint();
+           
 
         }
+        
+         lstKorisniciNaLetu.setModel(m);
+         lstKorisniciNaLetu.repaint();
+         
+         
+         System.out.println(l.getRezervacije().size());
 
     }
 

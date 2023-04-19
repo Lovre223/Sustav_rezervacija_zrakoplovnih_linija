@@ -123,6 +123,9 @@ public class PocetniInsert {
             l.settrajanjeleta(faker.number().numberBetween(30, 1200));
             l.setAvion(avioni.get(sb(0, BROJ_AVIONA - 1)));
             l.setAviokompanija(aviokompanije.get(sb(0, BROJ_AVIOKOMPANIJA - 1)));
+            
+            
+            
             k = new ArrayList<>();
             session.persist(l);
 

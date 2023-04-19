@@ -129,7 +129,7 @@ public class Let extends Entitet {
     }
 
     public void setRezervacije(List<Rezervacija> rezervacije) {
-        //this.rezervacije = rezervacije;
+        this.rezervacije = rezervacije;
     }
     
     

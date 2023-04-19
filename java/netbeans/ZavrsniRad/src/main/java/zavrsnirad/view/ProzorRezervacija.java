@@ -4,14 +4,17 @@
  */
 package zavrsnirad.view;
 
+import javax.swing.JOptionPane;
+import zavrsnirad.util.AppException;
+
 /**
  *
  * @author lovre
  */
 public class ProzorRezervacija extends javax.swing.JFrame {
 
-    private ProzorLet prozorLet;
-
+        private ProzorLet prozorLet;
+    
     /**
      * Creates new form ProzorRezervacija
      */
@@ -20,7 +23,10 @@ public class ProzorRezervacija extends javax.swing.JFrame {
         this.prozorLet = prozorLet;
         
         
-
+           var r = prozorLet.getOdabranuRezervaciju();
+           
+           lblRezervacija.setText(r.getKorisnik().getPrezime());
+           txtKlasa.setText(r.getKlasa());
         
     }
 
@@ -33,15 +39,11 @@ public class ProzorRezervacija extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNazivRezervacije = new javax.swing.JLabel();
         lblRezervacija = new javax.swing.JLabel();
         txtKlasa = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         btnPromjeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Klasa");
 
         btnPromjeni.setText("Promjeni");
         btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
@@ -57,55 +59,51 @@ public class ProzorRezervacija extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(lblNazivRezervacije, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(120, 120, 120)
-                                .addComponent(btnPromjeni))
-                            .addComponent(lblRezervacija, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))))
-                .addContainerGap(174, Short.MAX_VALUE))
+                            .addComponent(lblRezervacija, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(btnPromjeni)))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblNazivRezervacije, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(lblRezervacija, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(btnPromjeni)
-                        .addGap(107, 107, 107))))
+                .addGap(19, 19, 19)
+                .addComponent(lblRezervacija, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(txtKlasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnPromjeni)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+      var r = prozorLet.getOdabranuRezervaciju();
+      r.setKlasa(txtKlasa.getText());
+      
+        try {
+            prozorLet.getObradaLet().kontrolaRezervacija(r);
+            dispose();
+        } catch (AppException e) {
+            
+            JOptionPane.showMessageDialog(getRootPane(), e.getPoruka());
         
-
+        }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     /**
      * @param args the command line arguments
      */
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPromjeni;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblNazivRezervacije;
     private javax.swing.JLabel lblRezervacija;
     private javax.swing.JTextField txtKlasa;
     // End of variables declaration//GEN-END:variables

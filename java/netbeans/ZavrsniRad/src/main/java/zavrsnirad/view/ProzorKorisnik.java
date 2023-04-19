@@ -5,7 +5,12 @@
 package zavrsnirad.view;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import zavrsnirad.controller.ObradaKorisnik;
 import zavrsnirad.model.Korisnik;
@@ -64,6 +69,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lblUpozorenje = new javax.swing.JLabel();
+        lblSlika = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -148,15 +154,22 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
         jLabel7.setText("Oib");
 
+        lblSlika.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSlikaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,23 +178,30 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel3)
-                .addGap(49, 49, 49)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel3)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(80, 80, 80))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 500));
 
         jMenu2.setText("File");
 
@@ -294,6 +314,48 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
+    private void lblSlikaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSlikaMouseClicked
+        if (lstPodaci.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(
+                    getRootPane(),
+                    "Prvo odaberite korisnika");
+            return;
+        }
+        
+        JFileChooser jfc = new JFileChooser();
+        
+        if(jfc.showOpenDialog(getParent())==JFileChooser.APPROVE_OPTION){
+            String path = ProzorRezervacija.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        path =path.replace("\\", "/");
+ String[] niz = path.split("/");
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=1;i<niz.length-1;i++){
+            sb.append(niz[i]);
+            sb.append(File.separator);
+        }
+        
+        
+        path = sb.toString();
+        System.out.println(path);
+        
+        sb.append("slike");
+        sb.append(File.separator);
+        sb.append("korisnici");
+        sb.append(File.separator);
+        sb.append(lstPodaci.getSelectedValue().getSifra());
+        sb.append(".png");
+            File fileName = new File(sb.toString());
+            try {
+                     BufferedImage bImage = ImageIO.read(jfc.getSelectedFile());
+            ImageIO.write(bImage, "png", new File(sb.toString()));
+                lblSlika.setIcon(new ImageIcon(bImage));
+            } catch (Exception e) {
+            }
+         }
+        
+    }//GEN-LAST:event_lblSlikaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -316,6 +378,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSlika;
     private javax.swing.JLabel lblUpozorenje;
     private javax.swing.JList<Korisnik> lstPodaci;
     private javax.swing.JTextField txtAdresa;
@@ -354,6 +417,40 @@ public class ProzorKorisnik extends javax.swing.JFrame {
             txtOib.setText(k.getOib());
             txtAdresa.setText(k.getAdresa());
             txtEmail.setText(k.getEmail());
+            
+               
+        String path = ProzorRezervacija.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        path =path.replace("\\", "/");
+        String[] niz = path.split("/");
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=1;i<niz.length-1;i++){
+            sb.append(niz[i]);
+            sb.append(File.separator);
+        }
+        
+        
+        path = sb.toString();
+        System.out.println(path);
+        
+        sb.append("slike");
+        sb.append(File.separator);
+        String pocetniDirektorij = sb.toString();
+        sb.append("korisnici");
+        sb.append(File.separator);
+        
+        
+        path =  sb.toString() + k.getSifra() + ".png";
+        System.out.println(path);
+        File slika = new File(path );
+        
+        if(slika.exists()){
+            System.out.println("Slika postoji");
+            lblSlika.setIcon(new ImageIcon(slika.getAbsolutePath()));
+        }else{
+            slika = new File(pocetniDirektorij + File.separator + "nemaSlike.png");
+            lblSlika.setIcon(new ImageIcon(slika.getAbsolutePath()));
+        }
     
         
         

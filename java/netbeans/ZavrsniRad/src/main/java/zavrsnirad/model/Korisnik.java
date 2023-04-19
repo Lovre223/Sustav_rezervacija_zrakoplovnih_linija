@@ -6,6 +6,7 @@ package zavrsnirad.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class Korisnik extends Entitet {
     private String email;
     
     
-   @OneToMany(mappedBy = "korisnik") 
-   private List<Rezervacija> rezervacije;
+   @ManyToMany(mappedBy = "korisnik") 
+   private List<Rezervacija> letovi = new ArrayList<>();
 
     
     public Korisnik() {
@@ -38,14 +39,16 @@ public class Korisnik extends Entitet {
         this.adresa = adresa;
         this.email = email;
        
+                
+       
     }
 
-    public List<Rezervacija> getRezervacije() {
-        return rezervacije;
+    public List<Rezervacija> getLetovi() {
+        return letovi;
     }
 
-    public void setRezervacije(List<Rezervacija> rezervacije) {
-        this.rezervacije = rezervacije;
+    public void setLetovi(List<Rezervacija> letovi) {
+        this.letovi = letovi;
     }
     
     
