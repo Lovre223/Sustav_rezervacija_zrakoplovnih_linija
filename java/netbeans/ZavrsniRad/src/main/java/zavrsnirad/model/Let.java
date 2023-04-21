@@ -19,7 +19,7 @@ public class Let extends Entitet {
     private BigDecimal cijena;
     private String luka_polazak;
     private String luka_dolazak;
-    private int trajanjeleta;
+    private long trajanjeleta;
 
     @ManyToOne
     private Avion avion;
@@ -35,7 +35,7 @@ public class Let extends Entitet {
     }
 
     public Let(int sifra, int br_leta, Date vrijeme_polaska, Date vijeme_dolaska, BigDecimal cijena,
-            String luka_polazak, String luka_dolazak, int trajanjeleta, Avion avion,
+            String luka_polazak, String luka_dolazak, long trajanjeleta, Avion avion,
             Aviokompanija aviokompanija, List<Rezervacija> rezervacije) {
         super(sifra);
         this.br_leta = br_leta;
@@ -99,11 +99,11 @@ public class Let extends Entitet {
         this.luka_dolazak = luka_dolazak;
     }
 
-    public int gettrajanjeleta() {
+    public long gettrajanjeleta() {
         return trajanjeleta;
     }
 
-    public void settrajanjeleta(int trajanjeleta) {
+    public void settrajanjeleta(long trajanjeleta) {
         this.trajanjeleta = trajanjeleta;
     }
 

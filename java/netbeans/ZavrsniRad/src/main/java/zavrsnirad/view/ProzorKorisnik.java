@@ -5,10 +5,13 @@
 package zavrsnirad.view;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -178,9 +181,9 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblUpozorenje, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
-                .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +191,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblSlika, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel1)
@@ -347,9 +350,9 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         sb.append(".png");
             File fileName = new File(sb.toString());
             try {
-                     BufferedImage bImage = ImageIO.read(jfc.getSelectedFile());
+                  BufferedImage bImage = ImageIO.read(jfc.getSelectedFile());
             ImageIO.write(bImage, "png", new File(sb.toString()));
-                lblSlika.setIcon(new ImageIcon(bImage));
+                lblSlika.setIcon(new ImageIcon(bImage.getScaledInstance(lblSlika.getWidth(),lblSlika.getHeight(), Image.SCALE_SMOOTH)));
             } catch (Exception e) {
             }
          }
@@ -444,9 +447,11 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         System.out.println(path);
         File slika = new File(path );
         
+  
         if(slika.exists()){
             System.out.println("Slika postoji");
-            lblSlika.setIcon(new ImageIcon(slika.getAbsolutePath()));
+               Image img2 = new ImageIcon(slika.getAbsolutePath()).getImage();
+            lblSlika.setIcon(new ImageIcon(img2.getScaledInstance(lblSlika.getWidth(),lblSlika.getHeight(),Image.SCALE_SMOOTH)));
         }else{
             slika = new File(pocetniDirektorij + File.separator + "nemaSlike.png");
             lblSlika.setIcon(new ImageIcon(slika.getAbsolutePath()));

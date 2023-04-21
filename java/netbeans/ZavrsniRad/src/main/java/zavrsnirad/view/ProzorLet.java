@@ -8,6 +8,7 @@ import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.DateTimePicker;
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -19,9 +20,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import zavrsnirad.controller.ObradaAviokompanija;
 import zavrsnirad.controller.ObradaAvion;
 import zavrsnirad.controller.ObradaKorisnik;
@@ -42,6 +46,7 @@ public class ProzorLet extends javax.swing.JFrame {
     private ObradaLet obrada;
     private ObradaKorisnik obradaKorisnik;
     private DecimalFormat df;
+    Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
 
     /**
      * Creates new form ProzorLet
@@ -53,12 +58,17 @@ public class ProzorLet extends javax.swing.JFrame {
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.of("hr", "HR"));
         df = new DecimalFormat("###,##0.00", dfs);
         btnTrazi.setText("🔍");
-
+      
+        
+        
+        
         ucitajAvione();
         ucitajAviokompanije();
         definirajDatumPolaska();
         definirajDatumDolaska();
+        
         ucitaj();
+       
     }
 
     private void ucitaj() {
@@ -111,7 +121,6 @@ public class ProzorLet extends javax.swing.JFrame {
         dtpVrijemeDolaska = new com.github.lgooddatepicker.components.DateTimePicker();
         dtpVrijemePolaska = new com.github.lgooddatepicker.components.DateTimePicker();
         jLabel7 = new javax.swing.JLabel();
-        txtTrajanjeLeta = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtLukaDolazak = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -130,6 +139,8 @@ public class ProzorLet extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        txtTrajanjeLeta = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -196,7 +207,6 @@ public class ProzorLet extends javax.swing.JFrame {
 
         jLabel7.setText("Trajanje leta(u minutama)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 432, -1, -1));
-        getContentPane().add(txtTrajanjeLeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 454, 181, -1));
 
         jLabel8.setText("Luka dolazak");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 495, -1, -1));
@@ -280,15 +290,41 @@ public class ProzorLet extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 212));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txtTrajanjeLeta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtTrajanjeLetaMouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(txtTrajanjeLeta, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(785, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(453, Short.MAX_VALUE)
+                .addComponent(txtTrajanjeLeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151)
+                .addComponent(jButton1)
+                .addGap(81, 81, 81))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 730));
@@ -477,6 +513,70 @@ public class ProzorLet extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lstKorisniciNaLetuMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LocalDate ld = dtpVrijemePolaska.datePicker.getDate();
+
+        LocalTime lt = dtpVrijemePolaska.timePicker.getTime();
+
+        LocalDateTime fromDateAndTime = LocalDateTime.of(ld,
+                lt);
+
+        Date datum = Date.from(fromDateAndTime.atZone(ZoneId.systemDefault()).toInstant());
+
+
+        LocalDate ldd = dtpVrijemeDolaska.datePicker.getDate();
+
+        LocalTime ltt = dtpVrijemeDolaska.timePicker.getTime();
+
+        LocalDateTime fromDateAndTime1 = LocalDateTime.of(ldd,
+                ltt);
+
+        Date datum1 = Date.from(fromDateAndTime1.atZone(ZoneId.systemDefault()).toInstant());
+
+      
+        long duration  = datum1.getTime() - datum.getTime();
+        
+        long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        
+        txtTrajanjeLeta.setText(String.valueOf(diffInMinutes));
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtTrajanjeLetaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTrajanjeLetaMouseEntered
+         LocalDate ld = dtpVrijemePolaska.datePicker.getDate();
+
+        LocalTime lt = dtpVrijemePolaska.timePicker.getTime();
+
+        LocalDateTime fromDateAndTime = LocalDateTime.of(ld,
+                lt);
+
+        Date datum = Date.from(fromDateAndTime.atZone(ZoneId.systemDefault()).toInstant());
+
+
+        LocalDate ldd = dtpVrijemeDolaska.datePicker.getDate();
+
+        LocalTime ltt = dtpVrijemeDolaska.timePicker.getTime();
+
+        LocalDateTime fromDateAndTime1 = LocalDateTime.of(ldd,
+                ltt);
+
+        Date datum1 = Date.from(fromDateAndTime1.atZone(ZoneId.systemDefault()).toInstant());
+
+      
+        long duration  = datum1.getTime() - datum.getTime();
+        
+        long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        
+        
+        if(diffInMinutes < 30 || diffInMinutes > 600){
+                    JOptionPane.showMessageDialog(getRootPane(), "Nedozvoljen datum");
+        
+        }else{
+        
+        txtTrajanjeLeta.setText(String.valueOf(diffInMinutes));
+        }
+    }//GEN-LAST:event_txtTrajanjeLetaMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -489,6 +589,7 @@ public class ProzorLet extends javax.swing.JFrame {
     private javax.swing.JComboBox<Avion> cmbAvioni;
     private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemeDolaska;
     private com.github.lgooddatepicker.components.DateTimePicker dtpVrijemePolaska;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -539,12 +640,7 @@ public class ProzorLet extends javax.swing.JFrame {
         } catch (Exception e) {
             l.setCijena(BigDecimal.ZERO);
         }
-        try {
-            l.settrajanjeleta(Integer.parseInt(txtTrajanjeLeta.getText()));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(getRootPane(), "Treba biti cijeli broj");
-
-        }
+      
 
         l.setAvion((Avion) cmbAvioni.getSelectedItem());
         l.setAviokompanija((Aviokompanija) cmbAviokompanija.getSelectedItem());
@@ -572,13 +668,33 @@ public class ProzorLet extends javax.swing.JFrame {
       
         
         l.setVijeme_dolaska(datum1);
+        
+        
+        long duration  = datum1.getTime() - datum.getTime();
+        
+        long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        
+        
+        
+        
+     
+        
+         /* try {
+            l.setTrajanjeleta(txt
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(getRootPane(), "Treba biti cijeli broj");
+
+        }*/
 
         List<Rezervacija> korisnici = new ArrayList<>();
 
         try {
             DefaultListModel<Rezervacija> m = (DefaultListModel<Rezervacija>) lstKorisniciNaLetu.getModel();
             for (int i = 0; i < m.getSize(); i++) {
-                korisnici.add(m.getElementAt(i));
+                 var r = m.getElementAt(i);
+                r.setLet(l);
+                korisnici.add(r);
+               
             }
         } catch (Exception e) {
             
@@ -731,4 +847,5 @@ public class ProzorLet extends javax.swing.JFrame {
         lstKorisniciUBazi.repaint();
 
     }
+
 }

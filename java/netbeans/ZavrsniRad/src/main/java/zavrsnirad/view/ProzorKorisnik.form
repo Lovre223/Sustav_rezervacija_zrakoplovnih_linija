@@ -241,9 +241,9 @@
                           <Component id="lblUpozorenje" min="-2" pref="171" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="222" max="32767" attributes="0"/>
-                  <Component id="lblSlika" min="-2" pref="231" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                  <EmptySpace pref="207" max="32767" attributes="0"/>
+                  <Component id="lblSlika" min="-2" pref="351" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -253,7 +253,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblSlika" min="-2" pref="373" max="-2" attributes="0"/>
+                          <Component id="lblSlika" min="-2" pref="385" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>

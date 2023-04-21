@@ -15,6 +15,39 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ObradaLet extends Obrada<Let> {
+    
+    
+     @Override
+    public void create() throws AppException {
+        if (entitet == null) {
+            throw new AppException("Entitet je null");
+        }
+
+        kontrolaUnos();
+         session.beginTransaction();
+        session.persist(entitet);
+        for(Rezervacija r : entitet.getRezervacije()){
+            session.persist(r);
+        }
+        session.getTransaction().commit();
+
+    }
+    
+    @Override
+    public void update() throws AppException {
+        if (entitet == null) {
+            throw new AppException("Entitet je null");
+        }
+
+        kontrolaPromjena();
+         session.beginTransaction();
+        session.persist(entitet);
+        for(Rezervacija r : entitet.getRezervacije()){
+            session.persist(r);
+        }
+        session.getTransaction().commit();
+
+    }
 
     @Override
     public List<Let> read() {
