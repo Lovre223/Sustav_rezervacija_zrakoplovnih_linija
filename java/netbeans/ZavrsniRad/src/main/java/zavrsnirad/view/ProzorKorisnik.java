@@ -77,7 +77,6 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -241,7 +240,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 500));
 
-        jMenu2.setText("File");
+        jMenu2.setText("Izlaz");
 
         jMenuItem1.setText("Izlaz");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,9 +251,6 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
 
         jMenuBar2.add(jMenu2);
-
-        jMenu3.setText("Edit");
-        jMenuBar2.add(jMenu3);
 
         setJMenuBar(jMenuBar2);
 
@@ -411,7 +407,6 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

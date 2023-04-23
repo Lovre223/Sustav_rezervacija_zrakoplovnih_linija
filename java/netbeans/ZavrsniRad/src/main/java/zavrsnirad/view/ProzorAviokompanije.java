@@ -25,6 +25,9 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     public ProzorAviokompanije() {
         initComponents();
         obrada = new ObradaAviokompanija();
+        btnTrazi.setText("🔍");
+        setTitle("Pregled aviokompanija");
+        
 
         ucitaj();
     }
@@ -39,22 +42,23 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstAviokompanije = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        txtNaziv = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnBrisanje = new javax.swing.JButton();
+        txtNaziv = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstLet = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        btnBrisanje = new javax.swing.JButton();
-        btnPromjeni = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        txtUvjet = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnTrazi = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,8 +74,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Aviokompanije");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 7, -1, -1));
+        jPanel2.setBackground(new java.awt.Color(253, 253, 214));
 
         lstAviokompanije.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstAviokompanije.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -81,35 +84,12 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstAviokompanije);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 29, 121, 209));
-
-        jLabel2.setText("Naziv");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 28, -1, -1));
-        getContentPane().add(txtNaziv, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 50, 182, -1));
-
         btnDodaj.setText("Dodaj");
         btnDodaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDodajActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDodaj, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 163, -1, -1));
-
-        lstLet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(lstLet);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 28, 199, 209));
-
-        jLabel3.setText("Letovi");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 6, -1, -1));
-
-        btnBrisanje.setText("Brisanje");
-        btnBrisanje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBrisanjeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBrisanje, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 163, -1, -1));
 
         btnPromjeni.setText("Promjeni");
         btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
@@ -117,24 +97,103 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
                 btnPromjeniActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPromjeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 204, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(253, 253, 214));
+        btnBrisanje.setText("Brisanje");
+        btnBrisanje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrisanjeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Naziv");
+
+        lstLet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(lstLet);
+
+        jLabel3.setText("Letovi");
+
+        jLabel1.setText("Aviokompanije");
+
+        btnTrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(btnPromjeni))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnDodaj)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(btnBrisanje))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTrazi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(242, 242, 242))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUvjet)
+                    .addComponent(btnTrazi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodaj)
+                            .addComponent(btnBrisanje))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPromjeni)
+                        .addGap(97, 97, 97))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 290));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 390));
 
-        jMenu1.setText("File");
+        jMenu1.setText("Izlaz");
 
         jMenuItem1.setText("Izlaz");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -145,9 +204,6 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuBar2.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar2.add(jMenu2);
 
         setJMenuBar(jMenuBar2);
 
@@ -246,9 +302,13 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+       ucitaj();
+    }//GEN-LAST:event_btnTraziActionPerformed
+
     private void ucitaj() {
         DefaultListModel<Aviokompanija> m = new DefaultListModel<>();
-        m.addAll(obrada.read());
+        m.addAll(obrada.read(txtUvjet.getText(), true));
         lstAviokompanije.setModel(m);
         lstAviokompanije.repaint();
     }
@@ -261,11 +321,11 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnTrazi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
@@ -275,6 +335,7 @@ public class ProzorAviokompanije extends javax.swing.JFrame {
     private javax.swing.JList<Aviokompanija> lstAviokompanije;
     private javax.swing.JList<Let> lstLet;
     private javax.swing.JTextField txtNaziv;
+    private javax.swing.JTextField txtUvjet;
     // End of variables declaration//GEN-END:variables
 
     private void napuniView() {
