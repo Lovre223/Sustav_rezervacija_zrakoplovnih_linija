@@ -27,6 +27,8 @@ public class ProzorAvioni extends javax.swing.JFrame {
         obrada = new ObradaAvion();
         
         btnTrazi.setText("🔍");
+        
+        setTitle("Pregled aviona");
 
         ucitaj();
     }
