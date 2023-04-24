@@ -15,24 +15,44 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ObradaLet extends Obrada<Let> {
-    
-    
-     @Override
+
+    @Override
     public void create() throws AppException {
         if (entitet == null) {
             throw new AppException("Entitet je null");
         }
 
         kontrolaUnos();
-         session.beginTransaction();
+        session.beginTransaction();
         session.persist(entitet);
-        for(Rezervacija r : entitet.getRezervacije()){
+        for (Rezervacija r : entitet.getRezervacije()) {
             session.persist(r);
         }
         session.getTransaction().commit();
 
     }
-    
+
+    @Override
+    public void delete() throws AppException {
+        if (entitet == null) {
+            throw new AppException("Entitet je null");
+        }
+
+        /*session.beginTransaction();
+        session.remove(entitet);
+
+        session.getTransaction().commit();*/
+
+        kontrolaBrisanje();
+        session.beginTransaction();
+        for (Rezervacija r : entitet.getRezervacije()) {
+            session.remove(r);
+        }
+
+        session.getTransaction().commit();
+
+    }
+
     @Override
     public void update() throws AppException {
         if (entitet == null) {
@@ -40,9 +60,9 @@ public class ObradaLet extends Obrada<Let> {
         }
 
         kontrolaPromjena();
-         session.beginTransaction();
+        session.beginTransaction();
         session.persist(entitet);
-        for(Rezervacija r : entitet.getRezervacije()){
+        for (Rezervacija r : entitet.getRezervacije()) {
             session.persist(r);
         }
         session.getTransaction().commit();
@@ -92,11 +112,7 @@ public class ObradaLet extends Obrada<Let> {
 
     @Override
     protected void kontrolaBrisanje() throws AppException {
-        if (entitet.getRezervacije() != null
-                && !entitet.getRezervacije().isEmpty()) {
-            throw new AppException("Let se ne može brisati"
-                    + " jer ima rezervaciju/e ");
-        }
+
     }
 
     private void kontrolaBrojaLeta() throws AppException {

@@ -22,7 +22,7 @@ public class Korisnik extends Entitet {
     private String email;
     
     
-   @ManyToMany(mappedBy = "korisnik") 
+   @OneToMany(mappedBy = "korisnik") 
    private List<Rezervacija> letovi = new ArrayList<>();
 
     

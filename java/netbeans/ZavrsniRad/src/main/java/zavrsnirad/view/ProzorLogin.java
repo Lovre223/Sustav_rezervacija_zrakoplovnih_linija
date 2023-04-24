@@ -92,9 +92,16 @@ public class ProzorLogin extends javax.swing.JFrame {
         lblRegistracija.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         lblRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegistracija.setText("Registracija novog operatera");
+        lblRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistracija.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegistracijaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblRegistracijaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRegistracijaMouseExited(evt);
             }
         });
 
@@ -169,6 +176,14 @@ public class ProzorLogin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblRegistracijaMouseClicked
 
+    private void lblRegistracijaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistracijaMouseEntered
+            lblRegistracija.setForeground(Color.blue);
+    }//GEN-LAST:event_lblRegistracijaMouseEntered
+
+    private void lblRegistracijaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistracijaMouseExited
+            lblRegistracija.setForeground(Color.black);
+    }//GEN-LAST:event_lblRegistracijaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -204,7 +219,7 @@ public class ProzorLogin extends javax.swing.JFrame {
              Operater o = obrada.autoriziraj(txtEmail.getText(), pswLozinka.getPassword());
              
             if(o == null){
-                lblPoruka.setText("Neispravna kombinacija email i lozinka");
+                lblPoruka.setText("Neispravna kombinacija email-a i lozinke");
                 return;
                 
             }

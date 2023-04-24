@@ -195,7 +195,7 @@ public class ProzorRegistracija extends javax.swing.JFrame {
             }
         } else {
 
-            JOptionPane.showMessageDialog(getRootPane(), "Lozinka nije dovoljno snažna");
+            JOptionPane.showMessageDialog(getRootPane(), "Lozinka mora biti veća od 10 i mora sadržavati barem jedno veliko i malo slovo");
 
         }
     }

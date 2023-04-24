@@ -24,10 +24,9 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ProzorKorisnik extends javax.swing.JFrame {
-        
+
     private ObradaKorisnik obrada;
-    
-    
+
     /**
      * Creates new form ProzorKorisnik
      */
@@ -35,11 +34,17 @@ public class ProzorKorisnik extends javax.swing.JFrame {
         initComponents();
         obrada = new ObradaKorisnik();
         getContentPane().setBackground(Color.white);
-        
+
         setTitle("Pregled korisnika");
         btnTrazi.setText("🔍");
-        
-        ucitaj();
+
+        ImageIcon ii = new ImageIcon(getClass().getResource("/user.png"));
+        Image i2 = ii.getImage().getScaledInstance(lblSlika.getWidth(), lblSlika.getHeight(), Image.SCALE_SMOOTH);
+
+        lblSlika.setIcon(new ImageIcon(i2));
+    
+
+            ucitaj();
         
         
     }
@@ -113,6 +118,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
         jLabel7.setText("Oib");
 
+        lblSlika.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSlika.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSlikaMouseClicked(evt);
@@ -268,46 +274,46 @@ public class ProzorKorisnik extends javax.swing.JFrame {
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         obrada.setEntitet(new Korisnik());
-        
+
         dodajNovog();
-        
+
         try {
             obrada.create();
             ucitaj();
         } catch (AppException ex) {
-                
+
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
-        
-        
+
+
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
-      ucitaj();
+        ucitaj();
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
-      if(evt.getValueIsAdjusting()){
+        if (evt.getValueIsAdjusting()) {
             return;
         }
-        if(lstPodaci.getSelectedValue()==null){
+        if (lstPodaci.getSelectedValue() == null) {
             return;
         }
-        
+
         obrada.setEntitet(lstPodaci.getSelectedValue());
-        
+
         napuniView();
-        
+
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrisanjeActionPerformed
-        if(lstPodaci.getSelectedValue() == null){
+        if (lstPodaci.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(getRootPane(), "Odaberite jedan od aviona");
             return;
 
         }
 
-        if(JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati " + obrada.getEntitet().getIme()+ "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)== JOptionPane.NO_OPTION ){
+        if (JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati " + obrada.getEntitet().getIme() + "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
 
             return;
 
@@ -330,7 +336,7 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-         if (lstPodaci.getSelectedValue() == null) {
+        if (lstPodaci.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(getRootPane(), "Odaberite jednog od korisnika za promjenu!!");
             return;
 
@@ -355,45 +361,43 @@ public class ProzorKorisnik extends javax.swing.JFrame {
                     "Prvo odaberite korisnika");
             return;
         }
-        
+
         JFileChooser jfc = new JFileChooser();
-        
-        if(jfc.showOpenDialog(getParent())==JFileChooser.APPROVE_OPTION){
+
+        if (jfc.showOpenDialog(getParent()) == JFileChooser.APPROVE_OPTION) {
             String path = ProzorRezervacija.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        path =path.replace("\\", "/");
- String[] niz = path.split("/");
-        
-        StringBuilder sb = new StringBuilder();
-        for(int i=1;i<niz.length-1;i++){
-            sb.append(niz[i]);
+            path = path.replace("\\", "/");
+            String[] niz = path.split("/");
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < niz.length - 1; i++) {
+                sb.append(niz[i]);
+                sb.append(File.separator);
+            }
+
+            path = sb.toString();
+            System.out.println(path);
+
+            sb.append("slike");
             sb.append(File.separator);
-        }
-        
-        
-        path = sb.toString();
-        System.out.println(path);
-        
-        sb.append("slike");
-        sb.append(File.separator);
-        sb.append("korisnici");
-        sb.append(File.separator);
-        sb.append(lstPodaci.getSelectedValue().getSifra());
-        sb.append(".png");
+            sb.append("korisnici");
+            sb.append(File.separator);
+            sb.append(lstPodaci.getSelectedValue().getSifra());
+            sb.append(".png");
             File fileName = new File(sb.toString());
             try {
-                  BufferedImage bImage = ImageIO.read(jfc.getSelectedFile());
-            ImageIO.write(bImage, "png", new File(sb.toString()));
-                lblSlika.setIcon(new ImageIcon(bImage.getScaledInstance(lblSlika.getWidth(),lblSlika.getHeight(), Image.SCALE_SMOOTH)));
+                BufferedImage bImage = ImageIO.read(jfc.getSelectedFile());
+                ImageIO.write(bImage, "png", new File(sb.toString()));
+                lblSlika.setIcon(new ImageIcon(bImage.getScaledInstance(lblSlika.getWidth(), lblSlika.getHeight(), Image.SCALE_SMOOTH)));
             } catch (Exception e) {
             }
-         }
-        
+        }
+
     }//GEN-LAST:event_lblSlikaMouseClicked
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrisanje;
@@ -431,67 +435,57 @@ public class ProzorKorisnik extends javax.swing.JFrame {
     }
 
     private void dodajNovog() {
-            var k = obrada.getEntitet();
-            
-              k.setIme(txtIme.getText());
-              k.setPrezime(txtPrezime.getText());
-              k.setOib(txtOib.getText());
-              k.setAdresa(txtAdresa.getText());
-              k.setEmail(txtEmail.getText());
-            
+        var k = obrada.getEntitet();
+
+        k.setIme(txtIme.getText());
+        k.setPrezime(txtPrezime.getText());
+        k.setOib(txtOib.getText());
+        k.setAdresa(txtAdresa.getText());
+        k.setEmail(txtEmail.getText());
 
     }
-    
-    private void napuniView(){
-            var k = obrada.getEntitet();
-            
-            txtIme.setText(k.getIme());
-            txtPrezime.setText(k.getPrezime());
-            txtOib.setText(k.getOib());
-            txtAdresa.setText(k.getAdresa());
-            txtEmail.setText(k.getEmail());
-            
-               
+
+    private void napuniView() {
+        var k = obrada.getEntitet();
+
+        txtIme.setText(k.getIme());
+        txtPrezime.setText(k.getPrezime());
+        txtOib.setText(k.getOib());
+        txtAdresa.setText(k.getAdresa());
+        txtEmail.setText(k.getEmail());
+
         String path = ProzorRezervacija.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        path =path.replace("\\", "/");
+        path = path.replace("\\", "/");
         String[] niz = path.split("/");
-        
+
         StringBuilder sb = new StringBuilder();
-        for(int i=1;i<niz.length-1;i++){
+        for (int i = 1; i < niz.length - 1; i++) {
             sb.append(niz[i]);
             sb.append(File.separator);
         }
-        
-        
+
         path = sb.toString();
         System.out.println(path);
-        
+
         sb.append("slike");
         sb.append(File.separator);
         String pocetniDirektorij = sb.toString();
         sb.append("korisnici");
         sb.append(File.separator);
-        
-        
-        path =  sb.toString() + k.getSifra() + ".png";
+
+        path = sb.toString() + k.getSifra() + ".png";
         System.out.println(path);
-        File slika = new File(path );
-        
-  
-        if(slika.exists()){
+        File slika = new File(path);
+
+        if (slika.exists()) {
             System.out.println("Slika postoji");
-               Image img2 = new ImageIcon(slika.getAbsolutePath()).getImage();
-            lblSlika.setIcon(new ImageIcon(img2.getScaledInstance(lblSlika.getWidth(),lblSlika.getHeight(),Image.SCALE_SMOOTH)));
-        }else{
+            Image img2 = new ImageIcon(slika.getAbsolutePath()).getImage();
+            lblSlika.setIcon(new ImageIcon(img2.getScaledInstance(lblSlika.getWidth(), lblSlika.getHeight(), Image.SCALE_SMOOTH)));
+        } else {
             slika = new File(pocetniDirektorij + File.separator + "nemaSlike.png");
             lblSlika.setIcon(new ImageIcon(slika.getAbsolutePath()));
         }
-    
-        
-        
-        
-        
+
     }
-    
-    
+
 }

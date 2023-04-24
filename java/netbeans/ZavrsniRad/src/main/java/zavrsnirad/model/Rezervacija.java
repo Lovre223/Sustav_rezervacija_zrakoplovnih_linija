@@ -20,7 +20,7 @@ public class Rezervacija extends Entitet {
 	private String klasa;
 
 	public Rezervacija() {
-		super();
+		
 	}
 
 	public Rezervacija(Let let, Korisnik korisnik, String klasa) {

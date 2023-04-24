@@ -1,5 +1,6 @@
 package zavrsnirad.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -26,7 +27,7 @@ public class Let extends Entitet {
     @ManyToOne
     private Aviokompanija aviokompanija;
 
-    @OneToMany(mappedBy = "let")
+    @OneToMany(mappedBy = "let", orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Rezervacija> rezervacije = new ArrayList<>();
    
     public Let() {

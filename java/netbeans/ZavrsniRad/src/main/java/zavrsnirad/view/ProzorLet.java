@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -30,8 +32,11 @@ import zavrsnirad.controller.ObradaAviokompanija;
 import zavrsnirad.controller.ObradaAvion;
 import zavrsnirad.controller.ObradaKorisnik;
 import zavrsnirad.controller.ObradaLet;
+import zavrsnirad.controller.ObradaRezervacija;
+
 import zavrsnirad.model.Aviokompanija;
 import zavrsnirad.model.Avion;
+import zavrsnirad.model.Entitet;
 import zavrsnirad.model.Korisnik;
 import zavrsnirad.model.Let;
 import zavrsnirad.model.Rezervacija;
@@ -44,6 +49,8 @@ import zavrsnirad.util.AppException;
 public class ProzorLet extends javax.swing.JFrame {
 
     private ObradaLet obrada;
+    private ObradaRezervacija obradaRezervacija;
+   
     private ObradaKorisnik obradaKorisnik;
     private DecimalFormat df;
     Border border = BorderFactory.createLineBorder(Color.GRAY, 1);
@@ -54,6 +61,7 @@ public class ProzorLet extends javax.swing.JFrame {
     public ProzorLet() {
         initComponents();
         obrada = new ObradaLet();
+        obradaRezervacija = new ObradaRezervacija();
         obradaKorisnik = new ObradaKorisnik();
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.of("hr", "HR"));
         df = new DecimalFormat("###,##0.00", dfs);
@@ -390,7 +398,7 @@ public class ProzorLet extends javax.swing.JFrame {
         if (lstPodaci.getSelectedValue() == null) {
             return;
         }
-        obrada.getEntitet().getRezervacije().clear();
+        
         napuniModel();
         try {
             obrada.update();
@@ -456,14 +464,25 @@ public class ProzorLet extends javax.swing.JFrame {
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
         if (lstPodaci.getSelectedValue() == null) {
             return;
-        }
-        obrada.getEntitet().getRezervacije().clear();
+        }   
+        
+           if (JOptionPane.showConfirmDialog(getRootPane(), "Sigurno želite obrisati let " + obrada.getEntitet().getBr_leta() + "?", "Brisanje", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+
+            return;
+
+           }
+        
+       obrada.getEntitet().getRezervacije().clear();
         try {
             obrada.delete();
             ucitaj();
         } catch (AppException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            
+           
         }
+        
+       
     }//GEN-LAST:event_btnObrisiActionPerformed
 
     private void btnObrisiKorisnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiKorisnikaActionPerformed
@@ -484,12 +503,12 @@ public class ProzorLet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObrisiKorisnikaActionPerformed
 
     private void lstKorisniciNaLetuValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstKorisniciNaLetuValueChanged
-          /*if (lstKorisniciNaLetu.getSelectedValue() == null) {
+          if (lstKorisniciNaLetu.getSelectedValue() == null) {
             return;
 
         }
         Rezervacija r = lstKorisniciNaLetu.getSelectedValue();
-       */
+       
     }//GEN-LAST:event_lstKorisniciNaLetuValueChanged
 
     private void lstKorisniciNaLetuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstKorisniciNaLetuMouseClicked
