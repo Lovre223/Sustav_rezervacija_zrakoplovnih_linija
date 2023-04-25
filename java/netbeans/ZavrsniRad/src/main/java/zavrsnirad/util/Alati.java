@@ -7,6 +7,8 @@ package zavrsnirad.util;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import us.codecraft.xsoup.Xsoup;
@@ -16,6 +18,8 @@ import us.codecraft.xsoup.Xsoup;
  * @author lovre
  */
 public class Alati {
+    
+      public static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy",  Locale.of("hr","HR"));
     
      public static String dovuciOib() {
 

@@ -5,6 +5,8 @@
 package zavrsnirad.controller;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import zavrsnirad.model.Let;
 import zavrsnirad.model.Rezervacija;
@@ -38,16 +40,16 @@ public class ObradaLet extends Obrada<Let> {
             throw new AppException("Entitet je null");
         }
 
-        /*session.beginTransaction();
-        session.remove(entitet);
-
-        session.getTransaction().commit();*/
+       
 
         kontrolaBrisanje();
         session.beginTransaction();
         for (Rezervacija r : entitet.getRezervacije()) {
             session.remove(r);
         }
+        
+        
+            session.remove(entitet);
 
         session.getTransaction().commit();
 
@@ -74,7 +76,25 @@ public class ObradaLet extends Obrada<Let> {
 
         return session.createQuery("from Let", Let.class).list();
     }
-
+    
+  
+     public List<Let> read(String datumString) {
+         System.out.println(datumString);
+         LocalDate Date = LocalDate.parse(datumString, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+         
+         System.out.println(Date);
+       return session.createQuery("from Let"
+               + " where cast(vrijeme_polaska as Date)=:uvjet"
+               
+              , 
+               Let.class)
+               .setParameter("uvjet", Date)
+               .setMaxResults(12)
+               .list();
+    }
+    
+    
+    
     @Override
     protected void kontrolaUnos() throws AppException {
         kontrolaBrojaLeta();

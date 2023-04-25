@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import zavrsnirad.util.Alati;
 
 @Entity
 public class Let extends Entitet {
@@ -27,7 +28,7 @@ public class Let extends Entitet {
     @ManyToOne
     private Aviokompanija aviokompanija;
 
-    @OneToMany(mappedBy = "let", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "let")
     private List<Rezervacija> rezervacije = new ArrayList<>();
    
     public Let() {
@@ -139,7 +140,7 @@ public class Let extends Entitet {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return String.valueOf(br_leta);
+        return String.valueOf(br_leta) + " " + Alati.sdf.format(vrijeme_polaska);
     }
 
 }
