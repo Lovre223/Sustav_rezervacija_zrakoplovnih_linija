@@ -57,6 +57,9 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         txtLozinka = new javax.swing.JPasswordField();
         txtPotvrda = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jTextField6.setText("jTextField1");
 
@@ -120,6 +123,20 @@ public class ProzorRegistracija extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 440));
 
+        jMenu1.setText("Izlaz");
+
+        jMenuItem1.setText("Izlaz");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +153,11 @@ public class ProzorRegistracija extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPotvrdaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+            new ProzorLogin().setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,6 +171,9 @@ public class ProzorRegistracija extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtEmail;

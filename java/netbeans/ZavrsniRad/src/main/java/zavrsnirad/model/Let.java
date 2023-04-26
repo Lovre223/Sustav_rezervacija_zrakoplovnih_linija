@@ -140,7 +140,7 @@ public class Let extends Entitet {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return String.valueOf(br_leta) + " " + Alati.sdf.format(vrijeme_polaska);
+        return String.valueOf(br_leta) + " " + Alati.sdf.format(getVrijeme_polaska());
     }
 
 }

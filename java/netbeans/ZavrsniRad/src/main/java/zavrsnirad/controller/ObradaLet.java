@@ -6,6 +6,7 @@ package zavrsnirad.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import zavrsnirad.model.Let;
@@ -17,6 +18,8 @@ import zavrsnirad.util.AppException;
  * @author lovre
  */
 public class ObradaLet extends Obrada<Let> {
+    
+    
 
     @Override
     public void create() throws AppException {
