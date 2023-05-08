@@ -32,9 +32,13 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 
 
  		
-	![image](https://user-images.githubusercontent.com/117756427/236881116-5972e3a5-3def-4aa9-b765-e8a1d3d02363.png)
 
 
+![image](https://user-images.githubusercontent.com/117756427/236883388-b719f932-7039-48d7-b3fa-408077efac87.png)
+
+
+        
+                        
 
 
 
