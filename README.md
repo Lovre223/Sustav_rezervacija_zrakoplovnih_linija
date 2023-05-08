@@ -1,7 +1,7 @@
 ERA dijagram
 
 
-!![image](https://user-images.githubusercontent.com/117756427/236879277-e865741d-b316-46de-b9db-a19c8bef20d0.png)
+![image](https://user-images.githubusercontent.com/117756427/236879277-e865741d-b316-46de-b9db-a19c8bef20d0.png)
 
 
 
@@ -18,13 +18,12 @@ Opis aplikacije
 	!![image](https://user-images.githubusercontent.com/117756427/236879448-ef3f26c3-8dda-458a-8a90-e565df1d8137.png)
 
 
-
 !![image](https://user-images.githubusercontent.com/117756427/236879547-4d2d69c2-7a5f-42fd-8cdf-b9aa1842eea6.png)
 
 
  
 					
-¸					Slika 1.
+					Slika 1.
 
 
 Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikacije i podizanja Hibernate kako bi došlo do spajanja s bazom podataka. Značajku koji sam  ubacio je korištenje JProgressBar-a za animaciju učitanja.
@@ -33,7 +32,7 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 
  		
 
-!![image](https://user-images.githubusercontent.com/117756427/236879581-13ef62c1-63ef-42e2-9b38-a8fd673d8803.png)
+![image](https://user-images.githubusercontent.com/117756427/236879581-13ef62c1-63ef-42e2-9b38-a8fd673d8803.png)
 
 
 
