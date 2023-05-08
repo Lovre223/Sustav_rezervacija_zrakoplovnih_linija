@@ -122,7 +122,7 @@ Slika 7. prikazuje ProzorLet u kojem omogučavamo unos korisnika na određeni le
 					Slika 9.
 
 
-Slika 9. prikazuje ProzorAviokompanija, tj. njihov pregled i popis letova na kojim se određena aviokompanija nalazi.  Svaki novi objekt ima omogućeno brisanje, dodavanje i promjenu. Pomoću gumba traži možemo pretraživati koje se sve aviokompanije nalaze u bazi po kojem god slovu želimo 
+Slika 9. prikazuje ProzorAviokompanija, tj. njihov pregled i popis letova na kojim se određena aviokompanija nalazi.  Svaki novi objekt ima omogućeno brisanje, dodavanje i promjenu. Pomoću gumba traži možemo pretraživati koje se sve aviokompanije nalaze u bazi po kojem god slovu želimo .
 
 
  
