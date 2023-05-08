@@ -44,7 +44,7 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 
 
 
- 
+ 					Slika 2.
 					
 					
 
