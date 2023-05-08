@@ -10,7 +10,7 @@ ERA dijagram
  
 Opis aplikacije
 
-	Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11.
+Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11.
 	
 
 
