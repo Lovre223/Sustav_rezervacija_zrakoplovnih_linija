@@ -10,16 +10,14 @@ ERA dijagram
  
 Opis aplikacije
 
-	Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11. 
+	Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11.
+	![image](https://user-images.githubusercontent.com/117756427/236882527-39bcff9c-0c8d-40b8-81c1-a6163d077bfd.png)
+
 	
-	![image](https://user-images.githubusercontent.com/117756427/236882319-f38f4f21-4083-4d79-abcb-879e7000d221.png)
+	
 
 
 
-
- 
-					
-					Slika 1.
 
 
 Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikacije i podizanja Hibernate kako bi došlo do spajanja s bazom podataka. Značajku koji sam  ubacio je korištenje JProgressBar-a za animaciju učitanja.
@@ -37,8 +35,7 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 
  
 					
-					Slika 2.
-
+					
 
 
 Slika 2. prikazuje ProzorLogin u kojem se operater ove aplikacije može prijavit. Prijava zahtijeva unos email-a i lozinke te je omogućena registracija više operatera.
