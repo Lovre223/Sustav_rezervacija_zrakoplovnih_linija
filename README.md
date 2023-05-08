@@ -52,6 +52,10 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 Slika 2. prikazuje ProzorLogin u kojem se operater ove aplikacije može prijavit. Prijava zahtijeva unos email-a i lozinke te je omogućena registracija više operatera.
 
 
+
+![image](https://user-images.githubusercontent.com/117756427/236883627-437d3479-c6c8-428d-ba41-15e8899a70b0.png)
+
+
           	
 					
 					Slika 3.
