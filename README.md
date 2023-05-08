@@ -20,7 +20,7 @@ Opis aplikacije
 
 
 
-Slika 1.
+						Slika 1.
 	
 
 
