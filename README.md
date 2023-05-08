@@ -13,9 +13,8 @@ Opis aplikacije
 	Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11. 
 	
 	
-	![image](https://user-images.githubusercontent.com/117756427/236880477-ac949045-5299-41f9-bd39-6a7069bc074d.png)
+	![image](https://user-images.githubusercontent.com/117756427/236881149-2a163d96-ac90-4adf-a3cc-c0d83a9ac983.png)
 
-	
 
 
  
@@ -28,7 +27,8 @@ Slika 1. prikazuje  Splash Screen koj se prvi prikazuje tokom pokretanja aplikac
 
 
  		
-	![image](https://user-images.githubusercontent.com/117756427/236880890-58ce63bc-ec8c-4111-8079-cb61ddf9e849.png)
+	![image](https://user-images.githubusercontent.com/117756427/236881116-5972e3a5-3def-4aa9-b765-e8a1d3d02363.png)
+
 
 
 
