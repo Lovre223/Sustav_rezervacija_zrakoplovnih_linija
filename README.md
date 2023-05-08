@@ -12,16 +12,15 @@ Opis aplikacije
 
 	Kao radnu okolinu sam koristio Apache NetBeans IDE 16,  Java 19 kao programski jezik i kao menadžment baze podataka sam koristio MariaDB 10.11.
 	
-	
-	
-	
-	![image](https://user-images.githubusercontent.com/117756427/236882527-39bcff9c-0c8d-40b8-81c1-a6163d077bfd.png)
-	
-	
-	
-	Slika 1.
 
-	
+
+
+
+![image](https://user-images.githubusercontent.com/117756427/236882527-39bcff9c-0c8d-40b8-81c1-a6163d077bfd.png)
+
+
+
+Slika 1.
 	
 
 
